@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-export default function useArticleFormik() {
+export default function useArticleFormik(addArticle) {
   const formik = useFormik({
     initialValues: {
       topicTitle: '',
@@ -32,6 +32,19 @@ export default function useArticleFormik() {
     ),
     onSubmit: (values) => {
       console.log(values);
+
+      /** @type {import('../App').Article} */
+      const article = {
+        createdAt: Date.now(),
+        deleted: false,
+        topic: values.topicTitle,
+        title: values.articleTitle,
+        href: values.articleUrl,
+        note: values.articleNote,
+        stars: 0,
+        read: 0,
+      };
+      addArticle(article);
       formik.resetForm();
     },
   });

@@ -1,10 +1,13 @@
 import FormInput from './FormInput';
 import useArticleFormik from '../hooks/useArticleFormik';
 
-const ArticleForm = () => {
-  const formik = useArticleFormik();
+const ArticleForm = ({ addArticle }) => {
+  const formik = useArticleFormik(addArticle);
   return (
-    <form className="form form-topic" onSubmit={formik.handleSubmit}>
+    <form
+      className="ArticleForm form form-topic"
+      onSubmit={formik.handleSubmit}
+    >
       <FormInput name="topicTitle" placeholder="Topic" formik={formik} />
       <FormInput
         name="articleTitle"
