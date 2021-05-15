@@ -11,7 +11,7 @@
   --text-muted: #838383;
 
   --px: 1rem;
-
+  --gutter: 1rem;
   --border-color: black;
   --border-radius: 7px;
 }
@@ -141,6 +141,7 @@ textarea,
 // Components
 .Topic {
   max-width: 350px;
+  margin-bottom: var(--gutter);
   padding: 1rem;
   background: var(--cl-off-white);
   border-radius: var(--border-radius);
@@ -188,4 +189,8 @@ textarea,
       }
     }
   }
+}
+
+.ArticleForm {
+  z-index: 1000;
 }

@@ -19,9 +19,13 @@ const Article = ({
   return (
     <li className="Article">
       <h3 className="article-name">
-        <a href={href} target="_blank" rel="noreferrer">
-          {title}
-        </a>
+        {href ? (
+          <a href={href} target="_blank" rel="noreferrer">
+            {title}
+          </a>
+        ) : (
+          <span>{title}</span>
+        )}
       </h3>
       <div className="article-controls">
         <Stars stars={stars} updateStars={updateStars} />
