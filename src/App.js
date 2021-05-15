@@ -2,39 +2,15 @@ import { useEffect, useState } from 'react';
 import firebase from './config/firebase';
 import ArticleForm from './components/ArticleForm';
 import Topic from './components/Topic';
+import { useSelector, useDispatch } from 'react-redux';
+import { setArticles } from './app/articlesSlice';
 
 const userKey = 'demo';
 
 function App() {
-  /**
-   * @typedef {Object} Article
-   * @property {number} createdAt
-   * @property {boolean} deleted
-   * @property {string} href
-   * @property {string} note
-   * @property {string} title
-   * @property {string} topic
-   * @property {number} read
-   * @property {number} stars
-   */
+  const articles = useSelector((state) => state.articles);
+  const dispatch = useDispatch();
 
-  /**
-   * @typedef {object} StateArticle
-   * @property {string} id
-   * @property {number} createdAt
-   * @property {boolean} deleted
-   * @property {string} href
-   * @property {string} note
-   * @property {string} title
-   * @property {string} topic
-   * @property {number} read
-   * @property {number} stars
-   */
-
-  /**
-   * @type {[StateArticle[], function]}
-   */
-  const [articles, setArticles] = useState([]);
   const topicNames = articles.reduce((topics, article) => {
     if (!topics.includes(article.topic)) {
       topics.push(article.topic);
@@ -54,10 +30,11 @@ function App() {
         id: key,
       }));
 
-      setArticles(currentArticles);
+      // setArticles(currentArticles);
+      dispatch(setArticles(currentArticles));
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   /**
    * Add an article to user's db

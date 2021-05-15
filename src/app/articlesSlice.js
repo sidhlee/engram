@@ -1,6 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-/**  @type {import("../App").StateArticle[]} */
+/**
+ * @typedef {Object} Article
+ * @property {number} createdAt
+ * @property {boolean} deleted
+ * @property {string} href
+ * @property {string} note
+ * @property {string} title
+ * @property {string} topic
+ * @property {number} read
+ * @property {number} stars
+ */
+
+/**
+ * @typedef {object} StateArticle
+ * @property {string} id
+ * @property {number} createdAt
+ * @property {boolean} deleted
+ * @property {string} href
+ * @property {string} note
+ * @property {string} title
+ * @property {string} topic
+ * @property {number} read
+ * @property {number} stars
+ */
+
+/**  @type {StateArticle[]} */
 const initialState = [];
 
 const getArticleIndexById = (articles, articleId) => {
@@ -72,6 +97,14 @@ const articlesSlice = createSlice({
   },
 });
 
-export const articlesActions = articlesSlice.actions;
+export const {
+  set: setArticles,
+  add: addArticle,
+  remove: removeArticle,
+  incrementRead: incrementArticleRead,
+  decrementRead: decrementArticleRead,
+  updateStars: updateArticleStars,
+  updateNote: updateArticleNote,
+} = articlesSlice.actions;
 
 export default articlesSlice.reducer;
