@@ -10,7 +10,7 @@
   --text-inverse: white;
   --text-muted: #838383;
 
-  --px: 1rem;
+  --px: 2rem;
   --gutter: 1rem;
   --border-color: black;
   --border-radius: 7px;
@@ -139,6 +139,13 @@ textarea,
 }
 
 // Components
+
+.App {
+  .app-main {
+    padding: var(--px);
+  }
+}
+
 .Topic {
   max-width: 350px;
   margin-bottom: var(--gutter);

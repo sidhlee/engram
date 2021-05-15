@@ -75,7 +75,7 @@ function App() {
           <h1>Engram</h1>
         </div>
       </header>
-      <main className="AppMain">
+      <main className="app-main">
         <ul className="Topics">
           {topicNames.map((topicName) => {
             const articlesByTopic = articles.filter(
