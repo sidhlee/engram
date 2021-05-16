@@ -35,7 +35,11 @@ const ArticleControls = ({
         >
           Note
         </button>
-        <button type="button" onClick={toggleConfirmMenu}>
+        <button
+          type="button"
+          className="delete-button"
+          onClick={toggleConfirmMenu}
+        >
           <span aria-label="delete article">
             <TrashIcon />
           </span>

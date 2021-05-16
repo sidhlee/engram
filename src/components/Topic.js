@@ -37,9 +37,9 @@ const Topic = ({ articles }) => {
       </header>
       {showAddForm && (
         <ArticleForm
-          className="topic-form"
+          className="topic-form shadow"
           topic={topic}
-          onBlur={() => setShowAddForm(false)}
+          closeForm={() => setShowAddForm(false)}
         />
       )}
       <ul>

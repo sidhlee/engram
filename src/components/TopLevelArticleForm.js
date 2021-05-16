@@ -11,6 +11,7 @@ const TopLevelArticleForm = ({ addArticle }) => {
       <ArticleForm
         className={`TopLevelArticleForm shadow ${show ? '' : 'hidden'}`}
         addArticle={addArticle}
+        closeForm={() => setShow(false)}
       />
       <button
         className={`top-form-toggle shadow${show ? ' close-form' : ''}`}

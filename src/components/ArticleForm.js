@@ -1,7 +1,7 @@
 import FormInput from './FormInput';
 import useArticleFormik from '../hooks/useArticleFormik';
 
-const ArticleForm = ({ className, topic, onBlur }) => {
+const ArticleForm = ({ className, topic, closeForm }) => {
   const formik = useArticleFormik(topic);
 
   const formClassName = `ArticleForm form form-topic ${
@@ -11,32 +11,43 @@ const ArticleForm = ({ className, topic, onBlur }) => {
     <form
       className={formClassName}
       onSubmit={formik.handleSubmit}
-      onBlur={onBlur}
+      onBlur={closeForm}
     >
-      {!topic && (
+      <div className="form-inputs">
+        {!topic && (
+          <FormInput
+            name="topicName"
+            placeholder="Topic"
+            formik={formik}
+            autoComplete={true}
+          />
+        )}
         <FormInput
-          name="topicName"
-          placeholder="Topic"
+          name="articleTitle"
+          placeholder="Article Name"
           formik={formik}
-          autoComplete={true}
         />
-      )}
-      <FormInput
-        name="articleTitle"
-        placeholder="Article Name"
-        formik={formik}
-      />
-      <FormInput name="articleUrl" placeholder="Article URL" formik={formik} />
-      <FormInput
-        name="articleNote"
-        placeholder="Note"
-        formik={formik}
-        textarea={true}
-      />
+        <FormInput
+          name="articleUrl"
+          placeholder="Article URL"
+          formik={formik}
+        />
+        <FormInput
+          name="articleNote"
+          placeholder="Note"
+          formik={formik}
+          textarea={true}
+        />
+      </div>
 
-      <button className="button" type="submit">
-        Add
-      </button>
+      <div className="form-buttons">
+        <button className="button" type="button" onClick={closeForm}>
+          Cancel
+        </button>
+        <button className="button" type="submit">
+          Add
+        </button>
+      </div>
     </form>
   );
 };

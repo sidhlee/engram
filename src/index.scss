@@ -1,6 +1,7 @@
 :root {
   --cl-yellow: #eaae00;
   --cl-blue: #1a8ee2;
+  --cl-blue-dark: #1781cc;
   --cl-dark-grey: #202124;
   --cl-error: red;
   --cl-danger: red;
@@ -13,7 +14,7 @@
 
   --px: 2rem;
   --gutter: 1rem;
-  --border-color: var(--text-main);
+  --border-color: #878787;
   --border-radius: 7px;
 
   --top-form-toggler-size: 4.5rem;
@@ -63,6 +64,7 @@ button {
   transition: all 200ms ease;
   &:hover {
     color: var(--text-main);
+    border-color: var(--text-main);
   }
 }
 
@@ -119,10 +121,7 @@ textarea,
 }
 
 .shadow {
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 // Component Classes
@@ -147,13 +146,48 @@ textarea,
   border-radius: var(--border-radius);
 
   background: white;
+  .form-buttons {
+    text-align: right;
+  }
+}
+
+.input-control {
+  width: 100%;
+  position: relative;
+  &:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+  input,
+  textarea {
+    width: 100%;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .error-message {
+    position: absolute;
+    font-size: 0.9em;
+    bottom: -1.1em;
+    left: 1em;
+    color: var(--cl-error);
+  }
 }
 
 .button {
-  // background: var(--cl-yellow);
-  // border-color: var(--cl-yellow);
+  // background: var(--cl-blue);
+  // border-color: var(--cl-blue);
+  color: var(--text-muted);
+  border: 0;
   text-transform: uppercase;
+  font-size: 0.9rem;
   font-weight: bold;
+  &:hover {
+    // background: var(--cl-blue-dark);
+    // border-color: var(--cl-blue-dark);
+    color: var(--text-main);
+  }
 }
 
 .button-sm {
@@ -177,23 +211,6 @@ textarea,
   &:hover {
     color: var(--cl-danger);
     transform: scale(1.1);
-  }
-}
-
-.input-control {
-  width: 100%;
-  position: relative;
-  margin-bottom: 1em;
-  input,
-  textarea {
-    width: 100%;
-  }
-  .error-message {
-    position: absolute;
-    font-size: 0.9em;
-    bottom: -1.1em;
-    left: 1em;
-    color: var(--cl-error);
   }
 }
 
@@ -312,7 +329,6 @@ textarea,
   position: fixed;
   right: calc(var(--top-form-toggler-size) + var(--px));
   bottom: calc(var(--top-form-toggler-size) + var(--px));
-  text-align: right; // place button to the right
   --btn-size: 4.5rem;
   z-index: var(--z-TopLevelArticleForm);
 
