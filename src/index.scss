@@ -139,9 +139,8 @@ textarea,
 .form {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  max-width: 350px;
-  margin: 0 auto;
+  max-width: 354px;
+  margin: 0;
   padding: 1em;
   border-radius: var(--border-radius);
 
@@ -251,7 +250,7 @@ textarea,
   }
 
   .topic-form {
-    margin: 1rem auto;
+    margin: 1rem 0;
   }
 }
 .Article {
@@ -303,6 +302,9 @@ textarea,
 .ArticleForm {
   z-index: 1000;
   min-width: 350px;
+  &.border {
+    border: 1px solid var(--border-color);
+  }
 }
 
 .ConfirmationAlert {

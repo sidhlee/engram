@@ -22,6 +22,15 @@ const Topic = ({ articles }) => {
     deleteArticles(articles);
   };
 
+  const handleDeleteTopicButtonClick = () => {
+    setShowDeleteConfirm((show) => !show);
+    setShowAddForm(false);
+  };
+  const handleAddArticleButtonClick = () => {
+    setShowAddForm((show) => !show);
+    setShowDeleteConfirm(false);
+  };
+
   return (
     <section className="Topic">
       <header>
@@ -29,7 +38,7 @@ const Topic = ({ articles }) => {
         <div className="topic-controls">
           <button
             className="button-md article-remove"
-            onClick={() => setShowDeleteConfirm((show) => !show)}
+            onClick={handleDeleteTopicButtonClick}
           >
             <span aria-label="Remove topic and all included articles">
               <FaMinus />
@@ -37,7 +46,7 @@ const Topic = ({ articles }) => {
           </button>
           <button
             className="button-md article-add"
-            onClick={() => setShowAddForm((show) => !show)}
+            onClick={handleAddArticleButtonClick}
           >
             <span aria-label="add article">
               <FaPlus />
@@ -55,7 +64,7 @@ const Topic = ({ articles }) => {
       )}
       {showAddForm && (
         <ArticleForm
-          className="topic-form shadow"
+          className="topic-form shadow border"
           topic={topic}
           closeForm={() => setShowAddForm(false)}
         />
