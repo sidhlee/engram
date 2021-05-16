@@ -3,6 +3,7 @@
   --cl-blue: #1a8ee2;
   --cl-dark-grey: #202124;
   --cl-error: red;
+  --cl-danger: red;
   --cl-white: white;
   --cl-off-white: #f8f8ff;
 
@@ -53,6 +54,7 @@ button {
   background: transparent;
   border: 0;
   color: var(--text-muted);
+  transition: all 200ms ease;
   &:hover {
     color: var(--text-main);
   }
@@ -119,6 +121,18 @@ textarea,
   // border-color: var(--cl-yellow);
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.button-sm {
+  padding: 0.25em 0.5em;
+  font-size: 0.9rem;
+}
+
+.button-danger {
+  &:hover {
+    color: var(--cl-danger);
+    transform: scale(1.1);
+  }
 }
 
 .input-control {
@@ -202,4 +216,11 @@ textarea,
 
 .ArticleForm {
   z-index: 1000;
+}
+
+.ArticleDeleteConfirm {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 2rem;
 }

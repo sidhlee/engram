@@ -8,7 +8,7 @@ const ArticleControls = ({
   updateStars,
   incrementRead,
   decrementRead,
-  deleteArticle,
+  toggleConfirmMenu,
 }) => {
   const handleNoteButtonClick = () => {
     console.log('note button click!');
@@ -39,7 +39,7 @@ const ArticleControls = ({
         >
           Note
         </button>
-        <button type="button" onClick={deleteArticle}>
+        <button type="button" onClick={toggleConfirmMenu}>
           <span aria-label="delete article">
             <TrashIcon />
           </span>

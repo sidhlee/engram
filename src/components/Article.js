@@ -2,9 +2,13 @@ import ArticleControls from './ArticleControls';
 import ArticleTitle from './ArticleTitle';
 
 import firebase from '../config/firebase';
+import { useState } from 'react';
+import ArticleDeleteConfirm from './ArticleDeleteConfirm';
 
 const Article = ({ id, title, href, stars, read, note }) => {
-  const updateStars = async (id, updatedStars) => {
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  const updateStars = async (updatedStars) => {
     console.log('updateStars', id, updatedStars, stars);
     // Ignore if stars falls out of range
     if (updatedStars < 0 || updatedStars > 5) return;
@@ -16,10 +20,43 @@ const Article = ({ id, title, href, stars, read, note }) => {
         .ref(`demo/${id}/stars`)
         .set(stars - 1);
     }
-
     const starsRef = firebase.database().ref(`demo/${id}/stars`);
     starsRef.set(updatedStars);
   };
+
+  const incrementRead = () => {
+    firebase
+      .database()
+      .ref(`demo/${id}/read`)
+      .set(read + 1);
+  };
+
+  const decrementRead = () => {
+    // can't decrement below 0
+    if (read === 0) return;
+    firebase
+      .database()
+      .ref(`demo/${id}/read`)
+      .set(read - 1);
+  };
+
+  const toggleConfirmMenu = () => {
+    setShowDeleteConfirm((show) => !show);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteConfirm(false);
+  };
+
+  const deleteArticle = async () => {
+    try {
+      firebase.database().ref(`demo/${id}/deleted`).set(true);
+      setShowDeleteConfirm(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <li className="Article">
       <ArticleTitle href={href} title={title} />
@@ -28,8 +65,17 @@ const Article = ({ id, title, href, stars, read, note }) => {
         href={href}
         read={read}
         note={note}
-        updateStars={(stars) => updateStars(id, stars)}
+        updateStars={(stars) => updateStars(stars)}
+        incrementRead={incrementRead}
+        decrementRead={decrementRead}
+        toggleConfirmMenu={toggleConfirmMenu}
       />
+      {showDeleteConfirm && (
+        <ArticleDeleteConfirm
+          cancelDelete={cancelDelete}
+          deleteArticle={deleteArticle}
+        />
+      )}
     </li>
   );
 };
