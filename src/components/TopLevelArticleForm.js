@@ -8,15 +8,17 @@ const TopLevelArticleForm = ({ addArticle }) => {
 
   return (
     <>
-      <div className="TopLevelArticleForm">
-        <ArticleForm className={show ? '' : 'hidden'} addArticle={addArticle} />
-        <button
-          className={`form-toggle shadow${show ? ' close-form' : ''}`}
-          onClick={() => setShow((show) => !show)}
-        >
-          <FaPlus />
-        </button>
-      </div>
+      <ArticleForm
+        className={`TopLevelArticleForm ${show ? '' : 'hidden'}`}
+        addArticle={addArticle}
+      />
+      <button
+        className={`top-form-toggle shadow${show ? ' close-form' : ''}`}
+        onClick={() => setShow((show) => !show)}
+      >
+        <FaPlus />
+      </button>
+
       <BgOverlay show={show} />
     </>
   );
