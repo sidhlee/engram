@@ -4,7 +4,7 @@ import * as yup from 'yup';
 export default function useArticleFormik(addArticle) {
   const formik = useFormik({
     initialValues: {
-      topicTitle: '',
+      topicName: '',
       articleTitle: '',
       articleUrl: '',
       articleNote: '',
@@ -13,7 +13,7 @@ export default function useArticleFormik(addArticle) {
     // https://github.com/jquense/yup/issues/79#issuecomment-704963538
     validationSchema: yup.object().shape(
       {
-        topicTitle: yup.string().required('Topic is required'),
+        topicName: yup.string().required('Topic is required'),
         // Requiring either of the two fields
         // https://github.com/jquense/yup/issues/79#issuecomment-699605408
         articleTitle: yup.string().when('articleUrl', {
@@ -37,7 +37,7 @@ export default function useArticleFormik(addArticle) {
       const article = {
         createdAt: Date.now(),
         deleted: false,
-        topic: values.topicTitle,
+        topic: values.topicName,
         title: values.articleTitle,
         href: values.articleUrl,
         note: values.articleNote,

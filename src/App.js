@@ -1,5 +1,5 @@
 import useArticles from './hooks/useArticles';
-import ArticleForm from './components/ArticleForm';
+import TopLevelArticleForm from './components/TopLevelArticleForm';
 import TopicList from './components/TopicList';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       </header>
       <main className="app-main">
         <TopicList topicsOfArticles={topicsOfArticles} />
-        <ArticleForm addArticle={addArticle} />
+        <TopLevelArticleForm addArticle={addArticle} />
       </main>
     </div>
   );

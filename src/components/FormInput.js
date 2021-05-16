@@ -1,6 +1,6 @@
 import ErrorMessage from './ErrorMessage';
 
-const FormInput = ({ name, placeholder, formik, textarea }) => {
+const FormInput = ({ name, placeholder, formik, textarea, autoComplete }) => {
   const input = textarea ? (
     <textarea
       id={name}
@@ -19,7 +19,7 @@ const FormInput = ({ name, placeholder, formik, textarea }) => {
       onChange={formik.handleChange}
       value={formik.values[name]}
       placeholder={placeholder}
-      autoComplete="off"
+      autoComplete={autoComplete ? 'on' : 'off'}
     />
   );
   return (
