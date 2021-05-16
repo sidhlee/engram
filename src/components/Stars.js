@@ -13,7 +13,7 @@ const Stars = ({ stars, updateStars }) => {
         <button
           className="star-btn"
           type="button"
-          onClick={() => updateStars(i)} // update stars based on the button index between 0 to 4
+          onClick={() => updateStars(i + 1)} // update stars based on the button index between 0 to 4
         >
           <FaStar />
         </button>

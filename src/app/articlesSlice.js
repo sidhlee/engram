@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import firebase from '../config/firebase';
 
 /**
  * @typedef {Object} Article
@@ -32,17 +33,15 @@ const getArticleIndexById = (articles, articleId) => {
   return articles.findIndex((article) => article.id === articleId);
 };
 
-const set = (state, action) => {
+const hydrateFromDb = (state, action) => {
   // to replace existing state with Immer, return the new value directly
   // https://redux-toolkit.js.org/usage/immer-reducers#resetting-and-replacing-state
   return action.payload;
 };
 
-const add = (state, action) => {
-  // Immer allows you to directly mutate the "draft" state and it will update the state immutably for you.
-  // https://redux-toolkit.js.org/usage/immer-reducers#immutable-updates-with-immer
-  state.push(action.payload);
-};
+const add = createAsyncThunk('firebase/addA', (article, thunkAPI) => {
+  firebase.database().ref('demo').push(article);
+});
 
 const remove = (state, action) => {
   const id = action.payload;
@@ -87,18 +86,22 @@ const articlesSlice = createSlice({
   name: 'articles',
   initialState,
   reducers: {
-    set,
-    add,
+    hydrateFromDb,
     remove,
     updateStars,
     incrementRead,
     decrementRead,
     updateNote,
   },
+  extraReducers: {
+    [add.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+  },
 });
 
 export const {
-  set: setArticles,
+  hydrateFromDb: hydrateArticlesFromDb,
   add: addArticle,
   remove: removeArticle,
   incrementRead: incrementArticleRead,

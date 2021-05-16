@@ -1,4 +1,5 @@
 import { FaTrash as TrashIcon } from 'react-icons/fa';
+
 import Stars from './Stars';
 
 const Article = ({
@@ -8,10 +9,10 @@ const Article = ({
   read,
   note,
   updateStars,
-  updateNote,
   incrementRead,
   decrementRead,
   deleteArticle,
+  updateNote,
 }) => {
   const handleNoteButtonClick = () => {
     console.log('note button click!');

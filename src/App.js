@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import firebase from './config/firebase';
 import ArticleForm from './components/ArticleForm';
 import Topic from './components/Topic';
 import { useSelector, useDispatch } from 'react-redux';
-import { setArticles } from './app/articlesSlice';
+import { hydrateArticlesFromDb } from './app/articlesSlice';
 
-const userKey = 'demo';
+export const userKey = 'demo';
 
 function App() {
   const articles = useSelector((state) => state.articles);
@@ -31,7 +31,7 @@ function App() {
       }));
 
       // setArticles(currentArticles);
-      dispatch(setArticles(currentArticles));
+      dispatch(hydrateArticlesFromDb(currentArticles));
     });
     return unsubscribe;
   }, [dispatch]);
