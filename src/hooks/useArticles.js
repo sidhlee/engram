@@ -62,6 +62,11 @@ export default function useArticles() {
   /** an object containing topics as key and each topic is mapped to an array of articles with given topic  */
   const topicsOfArticles = articles.reduce((topics, article) => {
     const topic = article.topic;
+    // If article is deleted, don't include it in the articles array
+    if (article.deleted) {
+      return topics;
+    }
+
     if (topics[topic]) {
       topics[topic].push(article);
     } else {
@@ -97,6 +102,5 @@ export const deleteArticles = (articles) => {
     obj[updatePath] = true;
     return obj;
   }, {});
-  // articlesRef.update(updateObject);
-  console.log(updateObject);
+  articlesRef.update(updateObject);
 };
