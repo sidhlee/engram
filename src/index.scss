@@ -161,6 +161,18 @@ textarea,
   font-size: 0.9rem;
 }
 
+.button-md {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  padding: 0.25em 0.5em;
+  span {
+    display: block;
+    line-height: 0; // remove empty space at the bottom
+  }
+}
+
 .button-danger {
   &:hover {
     color: var(--cl-danger);
@@ -209,8 +221,16 @@ textarea,
   padding: 1rem;
   background: var(--cl-off-white);
   border-radius: var(--border-radius);
-  .topic-name {
-    margin-bottom: 0.5em;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .topic-name {
+      margin-bottom: 0.5em;
+    }
+    .topic-controls {
+      display: flex;
+    }
   }
 }
 .Article {

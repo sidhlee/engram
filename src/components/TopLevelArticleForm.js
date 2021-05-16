@@ -4,7 +4,7 @@ import ArticleForm from './ArticleForm';
 import BgOverlay from './BgOverlay';
 
 const TopLevelArticleForm = ({ addArticle }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   return (
     <>
