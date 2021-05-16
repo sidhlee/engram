@@ -9,7 +9,7 @@ const TopLevelArticleForm = ({ addArticle }) => {
   return (
     <>
       <ArticleForm
-        className={`TopLevelArticleForm ${show ? '' : 'hidden'}`}
+        className={`TopLevelArticleForm shadow ${show ? '' : 'hidden'}`}
         addArticle={addArticle}
       />
       <button

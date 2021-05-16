@@ -72,14 +72,14 @@ export default function useArticles() {
     return topics;
   }, {});
 
-  /**
-   * Add an article to user's db
-   * @param {Article} article
-   */
-  const addArticle = (article) => {
-    const articlesRef = firebase.database().ref(userKey);
-    articlesRef.push(article);
-  };
-
-  return { topicsOfArticles, addArticle };
+  return { topicsOfArticles };
 }
+
+/**
+ * Add an article to user's db
+ * @param {Article} article
+ */
+export const addArticle = (article) => {
+  const articlesRef = firebase.database().ref(userKey);
+  articlesRef.push(article);
+};

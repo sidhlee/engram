@@ -1,19 +1,26 @@
 import FormInput from './FormInput';
 import useArticleFormik from '../hooks/useArticleFormik';
 
-const ArticleForm = ({ addArticle, className }) => {
-  const formik = useArticleFormik(addArticle);
-  const formClassName = `ArticleForm form form-topic shadow ${
+const ArticleForm = ({ className, topic, onBlur }) => {
+  const formik = useArticleFormik(topic);
+
+  const formClassName = `ArticleForm form form-topic ${
     className ? className : ''
   }`;
   return (
-    <form className={formClassName} onSubmit={formik.handleSubmit}>
-      <FormInput
-        name="topicName"
-        placeholder="Topic"
-        formik={formik}
-        autoComplete={true}
-      />
+    <form
+      className={formClassName}
+      onSubmit={formik.handleSubmit}
+      onBlur={onBlur}
+    >
+      {!topic && (
+        <FormInput
+          name="topicName"
+          placeholder="Topic"
+          formik={formik}
+          autoComplete={true}
+        />
+      )}
       <FormInput
         name="articleTitle"
         placeholder="Article Name"

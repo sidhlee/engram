@@ -13,7 +13,7 @@
 
   --px: 2rem;
   --gutter: 1rem;
-  --border-color: black;
+  --border-color: var(--text-main);
   --border-radius: 7px;
 
   --top-form-toggler-size: 4.5rem;
@@ -231,6 +231,10 @@ textarea,
     .topic-controls {
       display: flex;
     }
+  }
+
+  .topic-form {
+    margin: 1rem auto;
   }
 }
 .Article {

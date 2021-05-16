@@ -3,7 +3,7 @@ import TopLevelArticleForm from './components/TopLevelArticleForm';
 import TopicList from './components/TopicList';
 
 function App() {
-  const { topicsOfArticles, addArticle } = useArticles();
+  const { topicsOfArticles } = useArticles();
 
   return (
     <div className="App">
@@ -12,7 +12,7 @@ function App() {
       </header>
       <main className="app-main">
         <TopicList topicsOfArticles={topicsOfArticles} />
-        <TopLevelArticleForm addArticle={addArticle} />
+        <TopLevelArticleForm />
       </main>
     </div>
   );

@@ -1,12 +1,16 @@
 import Article from './Article';
 import orderBy from 'lodash.orderby';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { useState } from 'react';
+import ArticleForm from './ArticleForm';
 
 /**
  * @component
  * @param {{articles: import('../hooks/useArticles.js').StateArticle}}
  */
 const Topic = ({ articles }) => {
+  const [showAddForm, setShowAddForm] = useState(false);
+
   const topic = articles[0].topic;
   // https://lodash.com/docs/4.17.15#orderBy
   const articlesSortedByDate = orderBy(articles, ['createdAt'], ['desc']);
@@ -21,13 +25,23 @@ const Topic = ({ articles }) => {
               <FaMinus />
             </span>
           </button>
-          <button className="button-md article-add">
+          <button
+            className="button-md article-add"
+            onClick={() => setShowAddForm((show) => !show)}
+          >
             <span aria-label="add article">
               <FaPlus />
             </span>
           </button>
         </div>
       </header>
+      {showAddForm && (
+        <ArticleForm
+          className="topic-form"
+          topic={topic}
+          onBlur={() => setShowAddForm(false)}
+        />
+      )}
       <ul>
         {articlesSortedByDate.map((article) => {
           const { title, stars, read, note, href, deleted, id } = article;

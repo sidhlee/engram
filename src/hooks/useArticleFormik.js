@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { addArticle } from '../hooks/useArticles';
 
-export default function useArticleFormik(addArticle) {
+export default function useArticleFormik(topic) {
   const formik = useFormik({
     initialValues: {
-      topicName: '',
+      topicName: topic,
       articleTitle: '',
       articleUrl: '',
       articleNote: '',
