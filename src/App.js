@@ -71,10 +71,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="logo">
-          <h1>Engram</h1>
-        </div>
+      <header className="header navbar">
+        <h1 className="logo">Engram</h1>
       </header>
       <main className="app-main">
         <ul className="Topics">
