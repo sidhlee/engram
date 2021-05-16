@@ -28,6 +28,14 @@ export const userKey = 'demo';
  * @property {number} stars
  */
 
+/**
+ * An object containing topics as key and each topic is mapped to an array of articles of the topic.
+ * @typedef {{[topic:string]: Article[]}} TopicsOfArticles
+ */
+
+/**
+ * @returns {{topicsOfArticles: TopicsOfArticles, addArticle: (article:Article) => void}}
+ */
 export default function useArticles() {
   /**
    * @type {[StateArticle[], function]}
