@@ -4,14 +4,7 @@ import Article from './Article';
  * @component
  * @param {TopicProps} param0
  */
-const Topic = ({
-  articles,
-  updateStars,
-  incrementRead,
-  decrementRead,
-  deleteArticle,
-  updateNote,
-}) => {
+const Topic = ({ articles }) => {
   const topic = articles[0].topic;
 
   return (
@@ -29,11 +22,6 @@ const Topic = ({
               note={note}
               href={href}
               id={id}
-              updateStars={(stars) => updateStars(id, stars)}
-              incrementRead={() => incrementRead(id)}
-              decrementRead={() => decrementRead(id)}
-              deleteArticle={() => deleteArticle(id)}
-              updateNote={() => updateNote(id, note)}
             />
           ) : null;
         })}

@@ -1,66 +1,34 @@
-import { FaTrash as TrashIcon } from 'react-icons/fa';
+import ArticleControls from './ArticleControls';
+import ArticleTitle from './ArticleTitle';
 
-import Stars from './Stars';
+import firebase from '../config/firebase';
 
-const Article = ({
-  title,
-  href,
-  stars,
-  read,
-  note,
-  updateStars,
-  incrementRead,
-  decrementRead,
-  deleteArticle,
-  updateNote,
-}) => {
-  const handleNoteButtonClick = () => {
-    console.log('note button click!');
+const Article = ({ id, title, href, stars, read, note }) => {
+  const updateStars = async (id, updatedStars) => {
+    console.log('updateStars', id, updatedStars, stars);
+    // Ignore if stars falls out of range
+    if (updatedStars < 0 || updatedStars > 5) return;
+
+    // If user clicks on the "on" star, turn it off.
+    if (updatedStars === stars && stars !== 0) {
+      return firebase
+        .database()
+        .ref(`demo/${id}/stars`)
+        .set(stars - 1);
+    }
+
+    const starsRef = firebase.database().ref(`demo/${id}/stars`);
+    starsRef.set(updatedStars);
   };
   return (
     <li className="Article">
-      <h3 className="article-name">
-        {href ? (
-          <a href={href} target="_blank" rel="noreferrer">
-            {title}
-          </a>
-        ) : (
-          <span>{title}</span>
-        )}
-      </h3>
-      <div className="article-controls">
-        <Stars stars={stars} updateStars={updateStars} />
-        <button
-          className="article-btn article-read"
-          type="button"
-          onClick={incrementRead}
-        >
-          Read: {read}
-        </button>
-        <button
-          className="article-btn article-unread"
-          type="button"
-          onClick={decrementRead}
-        >
-          Unread
-        </button>
-        <button
-          className="article-btn article-note"
-          type="button"
-          onClick={handleNoteButtonClick}
-        >
-          Note
-        </button>
-        <button type="button" onClick={deleteArticle}>
-          <span aria-label="delete article">
-            <TrashIcon />
-          </span>
-        </button>
-      </div>
-      <textarea
-        className="article-note-text"
-        value={note}
-        onChange={(e) => updateNote(e.target.value)}
+      <ArticleTitle href={href} title={title} />
+      <ArticleControls
+        stars={stars}
+        href={href}
+        read={read}
+        note={note}
+        updateStars={(stars) => updateStars(id, stars)}
       />
     </li>
   );

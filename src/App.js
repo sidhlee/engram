@@ -5,7 +5,35 @@ import Topic from './components/Topic';
 
 export const userKey = 'demo';
 
+/**
+ * @typedef {Object} Article
+ * @property {number} createdAt
+ * @property {boolean} deleted
+ * @property {string} href
+ * @property {string} note
+ * @property {string} title
+ * @property {string} topic
+ * @property {number} read
+ * @property {number} stars
+ */
+
+/**
+ * @typedef {object} StateArticle
+ * @property {string} id
+ * @property {number} createdAt
+ * @property {boolean} deleted
+ * @property {string} href
+ * @property {string} note
+ * @property {string} title
+ * @property {string} topic
+ * @property {number} read
+ * @property {number} stars
+ */
+
 function App() {
+  /**
+   * @type {[StateArticle[], function]}
+   */
   const [articles, setArticles] = useState([]);
 
   const topicNames = articles.reduce((topics, article) => {
