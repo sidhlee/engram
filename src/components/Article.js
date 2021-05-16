@@ -1,10 +1,9 @@
+import { useState } from 'react';
+import firebase from '../config/firebase';
 import ArticleControls from './ArticleControls';
 import ArticleTitle from './ArticleTitle';
-
-import firebase from '../config/firebase';
-import { useState } from 'react';
-import ArticleDeleteConfirm from './ArticleDeleteConfirm';
 import ArticleNote from './ArticleNote';
+import ConfirmationAlert from './ConfirmationAlert';
 
 const Article = ({ id, title, href, stars, read, note }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -75,9 +74,11 @@ const Article = ({ id, title, href, stars, read, note }) => {
       />
       {showNote && <ArticleNote note={note} articleId={id} />}
       {showDeleteConfirm && (
-        <ArticleDeleteConfirm
-          cancelDelete={cancelDelete}
-          deleteArticle={deleteArticle}
+        <ConfirmationAlert
+          message="Delete article?"
+          confirmText="Delete"
+          cancelAction={cancelDelete}
+          confirmAction={deleteArticle}
         />
       )}
     </li>

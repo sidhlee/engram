@@ -10,6 +10,7 @@ import ArticleForm from './ArticleForm';
  */
 const Topic = ({ articles }) => {
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const topic = articles[0].topic;
   // https://lodash.com/docs/4.17.15#orderBy
