@@ -4,9 +4,11 @@ import ArticleTitle from './ArticleTitle';
 import firebase from '../config/firebase';
 import { useState } from 'react';
 import ArticleDeleteConfirm from './ArticleDeleteConfirm';
+import ArticleNote from './ArticleNote';
 
 const Article = ({ id, title, href, stars, read, note }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showNote, setShowNote] = useState(false);
 
   const updateStars = async (updatedStars) => {
     console.log('updateStars', id, updatedStars, stars);
@@ -69,7 +71,9 @@ const Article = ({ id, title, href, stars, read, note }) => {
         incrementRead={incrementRead}
         decrementRead={decrementRead}
         toggleConfirmMenu={toggleConfirmMenu}
+        toggleNote={() => setShowNote((show) => !show)}
       />
+      {showNote && <ArticleNote note={note} articleId={id} />}
       {showDeleteConfirm && (
         <ArticleDeleteConfirm
           cancelDelete={cancelDelete}

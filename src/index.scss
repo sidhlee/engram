@@ -224,3 +224,11 @@ textarea,
   align-items: center;
   padding: 0.5rem 2rem;
 }
+
+.ArticleNote {
+  textarea {
+    padding: 0.5em;
+    resize: vertical;
+    line-height: 1.4;
+  }
+}

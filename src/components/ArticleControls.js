@@ -4,16 +4,12 @@ import Stars from './Stars';
 const ArticleControls = ({
   stars,
   read,
-  note,
   updateStars,
   incrementRead,
   decrementRead,
   toggleConfirmMenu,
+  toggleNote,
 }) => {
-  const handleNoteButtonClick = () => {
-    console.log('note button click!');
-  };
-
   return (
     <div className="article-controls">
       <div className="row">
@@ -35,7 +31,7 @@ const ArticleControls = ({
         <button
           className="article-btn article-note"
           type="button"
-          onClick={handleNoteButtonClick}
+          onClick={toggleNote}
         >
           Note
         </button>
@@ -45,11 +41,6 @@ const ArticleControls = ({
           </span>
         </button>
       </div>
-      <textarea
-        className="article-note-text"
-        value={note}
-        onChange={() => {}}
-      />
     </div>
   );
 };
