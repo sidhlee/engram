@@ -7,12 +7,9 @@ const ArticleForm = ({ className, topic, closeForm }) => {
   const formClassName = `ArticleForm form form-topic ${
     className ? className : ''
   }`;
+
   return (
-    <form
-      className={formClassName}
-      onSubmit={formik.handleSubmit}
-      onBlur={closeForm}
-    >
+    <form className={formClassName} onSubmit={formik.handleSubmit}>
       <div className="form-inputs">
         {!topic && (
           <FormInput

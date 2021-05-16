@@ -20,7 +20,7 @@ const TopLevelArticleForm = ({ addArticle }) => {
         <FaPlus />
       </button>
 
-      <BgOverlay show={show} />
+      <BgOverlay show={show} onClick={() => setShow(false)} />
     </>
   );
 };

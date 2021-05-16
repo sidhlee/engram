@@ -1,5 +1,5 @@
-const BgOverlay = ({ show }) => {
-  return show ? <div className="bg-overlay"></div> : null;
+const BgOverlay = ({ show, onClick }) => {
+  return show ? <div className="bg-overlay" onClick={onClick}></div> : null;
 };
 
 export default BgOverlay;
