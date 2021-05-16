@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import firebase from './config/firebase';
 import ArticleForm from './components/ArticleForm';
 import Topic from './components/Topic';
-import { useSelector, useDispatch } from 'react-redux';
-import { hydrateArticlesFromDb } from './app/articlesSlice';
 
 export const userKey = 'demo';
 
 function App() {
-  const articles = useSelector((state) => state.articles);
-  const dispatch = useDispatch();
+  const [articles, setArticles] = useState([]);
 
   const topicNames = articles.reduce((topics, article) => {
     if (!topics.includes(article.topic)) {
@@ -30,11 +27,10 @@ function App() {
         id: key,
       }));
 
-      // setArticles(currentArticles);
-      dispatch(hydrateArticlesFromDb(currentArticles));
+      setArticles(currentArticles);
     });
     return unsubscribe;
-  }, [dispatch]);
+  }, []);
 
   /**
    * Add an article to user's db

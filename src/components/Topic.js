@@ -1,36 +1,17 @@
-import { useDispatch } from 'react-redux';
-import {
-  updateArticleStars,
-  incrementArticleRead,
-  decrementArticleRead,
-  removeArticle,
-  updateArticleNote,
-} from '../app/articlesSlice';
 import Article from './Article';
 
 /**
  * @component
  * @param {TopicProps} param0
  */
-const Topic = ({ articles }) => {
-  const dispatch = useDispatch();
-
-  const updateStars = (id, stars) => {
-    dispatch(updateArticleStars({ id, stars }));
-  };
-  const incrementRead = (id) => {
-    dispatch(incrementArticleRead(id));
-  };
-  const decrementRead = (id) => {
-    dispatch(decrementArticleRead(id));
-  };
-  const deleteArticle = (id) => {
-    dispatch(removeArticle(id));
-  };
-  const updateNote = (id, note) => {
-    dispatch(updateArticleNote({ id, note }));
-  };
-
+const Topic = ({
+  articles,
+  updateStars,
+  incrementRead,
+  decrementRead,
+  deleteArticle,
+  updateNote,
+}) => {
   const topic = articles[0].topic;
 
   return (
