@@ -305,13 +305,14 @@ textarea,
   min-width: 350px;
 }
 
-.ArticleDeleteConfirm {
+.ConfirmationAlert {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem;
   p {
     color: var(--cl-danger);
+    margin-right: 1rem;
   }
 }
 

@@ -5,7 +5,7 @@ import { addArticle } from '../hooks/useArticles';
 export default function useArticleFormik(topic) {
   const formik = useFormik({
     initialValues: {
-      topicName: topic,
+      topicName: topic ? topic : '',
       articleTitle: '',
       articleUrl: '',
       articleNote: '',

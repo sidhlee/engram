@@ -83,3 +83,20 @@ export const addArticle = (article) => {
   const articlesRef = firebase.database().ref(userKey);
   articlesRef.push(article);
 };
+
+/**
+ *
+ * @param {StateArticle[]} articles
+ */
+export const deleteArticles = (articles) => {
+  const articlesRef = firebase.database().ref(userKey);
+  const updateObject = articles.reduce((obj, article) => {
+    // multi-path updates allows you to update values without overwriting other property values in the same level
+    // https://stackoverflow.com/questions/33784702/updating-nested-objects-firebase
+    const updatePath = `${article.id}/deleted`;
+    obj[updatePath] = true;
+    return obj;
+  }, {});
+  // articlesRef.update(updateObject);
+  console.log(updateObject);
+};

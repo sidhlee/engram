@@ -5,7 +5,7 @@ const ConfirmationAlert = ({
   confirmText,
 }) => {
   return (
-    <div className="ArticleDeleteConfirm">
+    <div className="ConfirmationAlert">
       <p>{message}</p>
       <button className="button-sm button-success" onClick={cancelAction}>
         Cancel

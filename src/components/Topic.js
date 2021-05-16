@@ -3,6 +3,8 @@ import orderBy from 'lodash.orderby';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { useState } from 'react';
 import ArticleForm from './ArticleForm';
+import ConfirmationAlert from './ConfirmationAlert';
+import { deleteArticles } from '../hooks/useArticles';
 
 /**
  * @component
@@ -16,12 +18,19 @@ const Topic = ({ articles }) => {
   // https://lodash.com/docs/4.17.15#orderBy
   const articlesSortedByDate = orderBy(articles, ['createdAt'], ['desc']);
 
+  const removeTopicAndAllArticles = () => {
+    deleteArticles(articles);
+  };
+
   return (
     <section className="Topic">
       <header>
         <h2 className="topic-name">{topic}</h2>
         <div className="topic-controls">
-          <button className="button-md article-remove">
+          <button
+            className="button-md article-remove"
+            onClick={() => setShowDeleteConfirm((show) => !show)}
+          >
             <span aria-label="Remove topic and all included articles">
               <FaMinus />
             </span>
@@ -36,6 +45,14 @@ const Topic = ({ articles }) => {
           </button>
         </div>
       </header>
+      {showDeleteConfirm && (
+        <ConfirmationAlert
+          message="Delete topic and all articles?"
+          confirmText="Delete"
+          cancelAction={() => setShowDeleteConfirm(false)}
+          confirmAction={removeTopicAndAllArticles}
+        />
+      )}
       {showAddForm && (
         <ArticleForm
           className="topic-form shadow"
