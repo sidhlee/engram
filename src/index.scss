@@ -23,7 +23,7 @@ $mobile: 500px;
 
   // spacing
   --px: Min(Max(0.25rem, 4vw), 4rem);
-  --gutter: 1rem;
+  --gutter: Min(Max(0.25rem, 2.5vw), 2rem);
 
   // dimensions
   --top-form-toggler-size: 4.5rem;
@@ -204,7 +204,7 @@ textarea,
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: var(--gutter); /* gutter size */
   background-clip: padding-box;
 }
 
@@ -412,7 +412,7 @@ textarea,
 }
 
 .Topic {
-  max-width: 450px;
+  max-width: 520px;
   margin: 0 auto var(--gutter);
   padding: 1rem;
   background: var(--cl-off-white);
@@ -433,6 +433,7 @@ textarea,
     margin: 1rem 0;
   }
 }
+
 .Article {
   padding: 0.5rem;
   background: var(--cl-white);
@@ -446,12 +447,12 @@ textarea,
     font-size: 1rem;
     font-weight: 500;
 
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
   }
   .article-controls {
     width: 100%;
     max-width: 360px;
-    margin: 0 auto;
+    margin-left: auto;
     .row {
       display: flex;
       justify-content: space-between;
