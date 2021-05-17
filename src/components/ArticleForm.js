@@ -2,7 +2,7 @@ import FormInput from './FormInput';
 import useArticleFormik from '../hooks/useArticleFormik';
 
 const ArticleForm = ({ className, topic, closeForm }) => {
-  const formik = useArticleFormik(topic);
+  const formik = useArticleFormik(topic, closeForm);
 
   const formClassName = `ArticleForm form form-topic ${
     className ? className : ''

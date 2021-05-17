@@ -1,8 +1,10 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { addArticle } from '../hooks/useArticles';
+import { useArticles } from '../context/articlesContext';
 
-export default function useArticleFormik(topic) {
+export default function useArticleFormik(topic, onSubmitCallback) {
+  const { addArticle } = useArticles();
+
   const formik = useFormik({
     initialValues: {
       topicName: topic ? topic : '',
@@ -47,6 +49,9 @@ export default function useArticleFormik(topic) {
       };
       addArticle(article);
       formik.resetForm();
+      if (onSubmitCallback) {
+        onSubmitCallback();
+      }
     },
   });
   return formik;

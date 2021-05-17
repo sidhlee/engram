@@ -3,14 +3,13 @@ import { FaPlus } from 'react-icons/fa';
 import ArticleForm from './ArticleForm';
 import BgOverlay from './BgOverlay';
 
-const TopLevelArticleForm = ({ addArticle }) => {
+const TopLevelArticleForm = () => {
   const [show, setShow] = useState(false);
 
   return (
     <>
       <ArticleForm
         className={`TopLevelArticleForm shadow ${show ? '' : 'hidden'}`}
-        addArticle={addArticle}
         closeForm={() => setShow(false)}
       />
       <button

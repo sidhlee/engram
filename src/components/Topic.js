@@ -4,13 +4,12 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 import { useState } from 'react';
 import ArticleForm from './ArticleForm';
 import ConfirmationAlert from './ConfirmationAlert';
-import { deleteArticles } from '../hooks/useArticles';
 
 /**
  * @component
- * @param {{articles: import('../hooks/useArticles.js').StateArticle}}
+ * @param {{articles: import('../context/articlesContext.js').StateArticle}}
  */
-const Topic = ({ articles }) => {
+const Topic = ({ articles, deleteArticles }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
