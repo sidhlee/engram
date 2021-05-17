@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import Logo from '../components/Logo';
 import { useAuth } from '../context/authContext';
 
 const LogIn = () => {
@@ -27,7 +28,7 @@ const LogIn = () => {
     <div className="LogIn">
       <div className="login-screen">
         <header>
-          <h1 className="logo">Engram</h1>
+          <Logo />
         </header>
         <main>
           <div className="login-buttons">

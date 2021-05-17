@@ -1,9 +1,13 @@
 import React from 'react';
+import Logo from './Logo';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ logOut, userName, userImageURL }) => {
   return (
     <div className="Navbar">
-      <h1 className="logo">Engram</h1>
+      <Link to="/">
+        <Logo />
+      </Link>
       <div className="navbar-controls">
         <button className="signout button-md inverse" onClick={logOut}>
           Signout

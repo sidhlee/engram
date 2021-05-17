@@ -1,7 +1,13 @@
 :root {
   --cl-yellow: #eaae00;
-  --cl-blue: #1a8ee2;
-  --cl-blue-dark: #1781cc;
+  --cl-primary-light: #cfd8dc;
+  --cl-accent: #00bcd4;
+  --cl-primary: #465ac9;
+  --cl-primary-dark: #3f51b5;
+
+  // --cl-blue: #1a8ee2;
+  --cl-blue: var(--cl-primary);
+  --cl-blue-dark: var(--cl-primary-dark);
   --cl-dark-grey: #202124;
   --cl-error: red;
   --cl-danger: red;
@@ -12,13 +18,18 @@
   --text-inverse: white;
   --text-muted: #838383;
 
+  // spacing
   --px: 2rem;
   --gutter: 1rem;
+
+  // dimensions
+  --top-form-toggler-size: 4.5rem;
+
+  // border
   --border-color: #878787;
   --border-radius: 7px;
 
-  --top-form-toggler-size: 4.5rem;
-
+  // z-index
   --z-bg-overlay: 500;
   --z-TopLevelArticleForm: 700;
   --z-form-toggle: 800;
@@ -211,13 +222,6 @@ textarea,
 
 // Component Classes
 
-.logo {
-  font-size: 2.75rem;
-  color: var(--text-inverse);
-  letter-spacing: -2px;
-  opacity: 0.9;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -366,6 +370,19 @@ textarea,
   }
 }
 
+.Logo {
+  .logo {
+    font-size: 2.75rem;
+    color: var(--text-inverse);
+    letter-spacing: -2px;
+    opacity: 0.9;
+    span {
+      position: relative;
+      top: 0.1em;
+    }
+  }
+}
+
 .Topic {
   max-width: 450px;
   margin: 0 auto var(--gutter);
@@ -489,7 +506,7 @@ textarea,
   background: var(--cl-blue);
   border-radius: 50%;
   z-index: var(--z-form-toggle);
-  transition: transform 150ms ease;
+  transition: all 150ms ease;
   svg {
     width: 100%;
     height: 100%;
@@ -497,6 +514,9 @@ textarea,
   }
   &.close-form {
     transform: rotate(45deg);
+  }
+  &:hover {
+    background: var(--cl-blue-dark);
   }
 }
 
