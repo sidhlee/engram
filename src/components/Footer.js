@@ -25,7 +25,7 @@ function Footer() {
         <div className="social">
           <div className="link-icons">
             <a
-              href="https://github.com/toypiano"
+              href="https://github.com/sidhlee"
               rel="noreferrer"
               target="_blank"
               aria-label="github"
@@ -35,7 +35,7 @@ function Footer() {
               </span>
             </a>
             <a
-              href="https://twitter.com/HayounSid"
+              href="https://twitter.com/sidhlee"
               rel="noreferrer"
               target="_blank"
               aria-label="twitter"
