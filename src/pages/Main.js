@@ -8,8 +8,13 @@ import { useAuth } from '../context/authContext';
 import { useHistory } from 'react-router';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useState } from 'react';
+import MenuButton from '../components/MenuButton';
+import MenuModal from '../components/MenuModal';
 
 const Main = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const { topicsOfArticles, deleteArticles, error, clearError, loading } =
     useArticles();
 
@@ -35,6 +40,16 @@ const Main = () => {
   };
   return (
     <div className="App">
+      <MenuButton
+        toggleMenu={() => setIsMenuOpen((show) => !show)}
+        isMenuOpen={isMenuOpen}
+      />
+      <MenuModal
+        isMenuOpen={isMenuOpen}
+        userImgURL={user.photoURL}
+        userName={user.name}
+        logOut={logOut}
+      />
       <header>
         <Navbar
           logOut={logOutAndRedirect}

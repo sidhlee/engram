@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
+import {} from 'react-icons/fa';
 
 const Navbar = ({ logOut, userName, userImageURL }) => {
   return (
@@ -9,13 +10,11 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
         <Logo />
       </Link>
 
-      <div className="navbar-controls">
+      <div className="navbar-col-right">
         <button className="signout button-md inverse" onClick={logOut}>
-          Signout
+          Sign Out
         </button>
-
-        <span className="user-name">{userName}</span>
-
+        <span className="user-name desktop-only">{userName}</span>
         <div className="user-img">
           <img src={userImageURL} alt={userName} />
         </div>
