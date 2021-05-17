@@ -1,17 +1,43 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, googleProvider } from '../config/firebase';
+import guestImg from '../images/guest.png';
+
+/**
+ * @typedef {object} User
+ * @property {string} userName
+ * @property {string} email
+ * @property {boolean} emailVerified
+ * @property {string} photoURL
+ * @property {string} id
+ */
 
 const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
+  /**
+   * @type {[User, function]}
+   */
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const signIn = () => {
+  const signIn = (asDemo) => {
     // You will be able to login without page refresh
     // -> all control flow within React stays intact.
-    return auth.signInWithPopup(googleProvider);
+    if (asDemo) {
+      const demoUser = {
+        name: 'Guest',
+        email: '',
+        emailVerified: false,
+        photoURL: guestImg,
+        refreshToken: '',
+        id: 'demo',
+      };
+
+      setUser(demoUser);
+    } else {
+      return auth.signInWithPopup(googleProvider);
+    }
 
     // If you used auth.signInWithRedirect method here,
     // user gets redirected to Google's auth page,
@@ -26,35 +52,39 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    console.log('logout');
-    return auth.signOut();
+    if (user && user.name === 'Guest') {
+      setUser(undefined);
+    } else {
+      return auth.signOut();
+    }
   };
-
-  // useEffect(() => {
-  //   // https://firebase.google.com/docs/auth/web/google-signin#web-v8_5
-  //   auth
-  //     .getRedirectResult()
-  //     .then((result) => {
-  //       // if (result.credential) {
-  //       //   /** @type {firebase.auth.OAuthCredential} */
-  //       //   const credential = result.credential;
-  //       //   // This gives you a Google Access Token. You can use it to access the Google API.
-  //       //   const token = credential.accessToken;
-  //       // }
-  //       // The signed-in user info.
-  //       setUser(result.user);
-  //       setLoading(false);
-  //       history.push('/');
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //     });
-  // }, [history]);
 
   useEffect(() => {
     try {
-      const unsubscribe = auth.onAuthStateChanged((user) => {
-        setUser(user);
+      const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+        if (firebaseUser) {
+          // User logged in! handpick data we need.
+          const {
+            displayName,
+            email,
+            emailVerified,
+            photoURL,
+            refreshToken,
+            uid,
+          } = firebaseUser;
+          const user = {
+            name: displayName,
+            email,
+            emailVerified,
+            photoURL,
+            refreshToken,
+            id: uid,
+          };
+          setUser(user);
+        } else {
+          // user logged out, reset our user state!
+          setUser(undefined);
+        }
         setLoading(false);
       });
 

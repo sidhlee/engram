@@ -31,14 +31,17 @@ const LogIn = () => {
         </header>
         <main>
           <div className="login-buttons">
-            <button className="login-button button-bg login-demo">
+            <button
+              className="login-button button-bg login-demo"
+              onClick={() => signIn('asDemo')}
+            >
               Try Demo
             </button>
             <button
               className="login-button button-bg login-google"
               onClick={handleGoogleSignInClick}
             >
-              Sign in with Google
+              Sign In with Google
             </button>
           </div>
         </main>

@@ -46,6 +46,11 @@ body {
   color: var(--text-main);
 }
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -206,10 +211,6 @@ textarea,
 
 // Component Classes
 
-.navbar {
-  padding: 1rem var(--px);
-}
-
 .logo {
   font-size: 2.75rem;
   color: var(--text-inverse);
@@ -285,6 +286,11 @@ textarea,
     display: block;
     line-height: 0; // remove empty space at the bottom
   }
+  &.inverse {
+    &:hover {
+      color: var(--text-inverse);
+    }
+  }
 }
 
 .button-bg {
@@ -329,6 +335,34 @@ textarea,
     color: var(--text-inverse);
     padding: 2rem;
     text-align: center;
+  }
+}
+
+.Navbar {
+  padding: 1rem var(--px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .navbar-controls {
+    display: flex;
+    gap: 1rem;
+  }
+  .signout {
+    position: relative;
+    top: 2px;
+  }
+  .user-name {
+    padding: 0.25em 0.5em;
+    font-size: 1.2rem;
+    color: var(--text-inverse);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-img {
+    width: 3rem;
+    height: 3rem;
   }
 }
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../config/firebase';
-
-export const userKey = 'demo';
+import { useAuth } from './authContext';
 
 /**
  * @typedef {Object} Article
@@ -36,6 +35,8 @@ export const userKey = 'demo';
 const ArticlesContext = React.createContext();
 
 export const ArticlesProvider = ({ children }) => {
+  const { user } = useAuth();
+
   /**
    * @type {[StateArticle[], function]}
    */
@@ -43,15 +44,14 @@ export const ArticlesProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const userId = user.id;
   useEffect(() => {
-    const articlesRef = firebase.database().ref(userKey);
+    const articlesRef = firebase.database().ref(userId);
 
     const unsubscribe = articlesRef.on('value', (dataSnapshot) => {
       setLoading(false);
       try {
         const data = dataSnapshot.val();
-        // console.log(data);
-
         const currentArticles = Object.entries(data).map(([key, val]) => ({
           ...val,
           id: key,
@@ -63,7 +63,7 @@ export const ArticlesProvider = ({ children }) => {
       }
     });
     return unsubscribe;
-  }, []);
+  }, [userId]);
 
   /** an object containing topics as key and each topic is mapped to an array of articles with given topic  */
   const topicsOfArticles = articles.reduce((topics, article) => {
@@ -89,7 +89,7 @@ export const ArticlesProvider = ({ children }) => {
    */
   const addArticle = (article) => {
     try {
-      const articlesRef = firebase.database().ref(userKey);
+      const articlesRef = firebase.database().ref(user.id);
       articlesRef.push(article);
     } catch (err) {
       setError('Adding article failed. Please try again.');
@@ -102,7 +102,7 @@ export const ArticlesProvider = ({ children }) => {
    */
   const deleteArticles = (articles) => {
     try {
-      const articlesRef = firebase.database().ref(userKey);
+      const articlesRef = firebase.database().ref(user.id);
       const updateObject = articles.reduce((obj, article) => {
         // multi-path updates allows you to update values without overwriting other property values in the same level
         // https://stackoverflow.com/questions/33784702/updating-nested-objects-firebase
