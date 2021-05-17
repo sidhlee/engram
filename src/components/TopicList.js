@@ -20,8 +20,9 @@ const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
 
   // https://www.npmjs.com/package/react-masonry-css
   const breakpointColumnsObj = {
-    default: 4,
-    1600: 3,
+    default: 5,
+    2400: 4,
+    1860: 3,
     1150: 2,
     760: 1,
   };
