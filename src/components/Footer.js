@@ -12,7 +12,7 @@ function Footer() {
           <p>
             is created by{' '}
             <a href="mailto:sidhlee@gmail.com">
-              <span className="my-name">Sid Hayoun Lee</span>
+              <span className="my-name nowrap">Sid Hayoun Lee</span>
             </a>{' '}
             at
           </p>
@@ -59,7 +59,8 @@ function Footer() {
       </div>
       <p>
         {' '}
-        &copy; {new Date().getFullYear()} design &amp; code by Sid Hayoun Lee
+        &copy; {new Date().getFullYear()} design &amp; code by{' '}
+        <span className="nowrap">Sid Hayoun Lee</span>
       </p>
     </footer>
   );

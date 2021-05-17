@@ -1,5 +1,5 @@
 $desktop: 1200px;
-$mobile: 400px;
+$mobile: 500px;
 
 :root {
   --cl-yellow: #eaae00;
@@ -37,11 +37,17 @@ $mobile: 400px;
   --z-TopLevelArticleForm: 700;
   --z-form-toggle: 800;
   --z-modal: 1000;
+
+  @media (max-width: $mobile) {
+    --top-form-toggler-size: 3.5rem;
+  }
 }
 
 html {
   box-sizing: border-box;
   font-size: Min(Max(95%, calc(1vw + 3px)), 125%);
+  // https://css-tricks.com/css-fix-for-100vh-in-mobile-webkit/
+  height: -webkit-fill-available;
 }
 *,
 *::before,
@@ -59,6 +65,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--cl-dark-grey);
   color: var(--text-main);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 img {
@@ -224,16 +232,20 @@ textarea,
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 // Component Classes
 
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 354px;
+  width: 100%;
+  // max-width: 354px;
   margin: 0;
   padding: 1em;
   border-radius: var(--border-radius);
-
   background: white;
   .form-buttons {
     text-align: right;
@@ -357,6 +369,9 @@ textarea,
   .navbar-controls {
     display: flex;
     gap: 1rem;
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
   .signout {
     position: relative;
@@ -495,6 +510,7 @@ textarea,
   position: fixed;
   right: calc(var(--top-form-toggler-size) + var(--px));
   bottom: calc(var(--top-form-toggler-size) + var(--px));
+  max-width: 360px;
   --btn-size: 4.5rem;
   z-index: var(--z-TopLevelArticleForm);
 
@@ -505,12 +521,25 @@ textarea,
     transform: scale(0);
     opacity: 0;
   }
+
+  @media (max-width: $mobile) {
+    min-width: initial;
+    width: calc(100% - 2 * var(--px));
+    left: 50%;
+    bottom: 50vh;
+    transform: translate3d(-50%, 50%, 0);
+
+    &.hidden {
+      transform: translate3d(-50%, 75%, 0);
+      opacity: 0;
+    }
+  }
 }
 
 .top-form-toggle {
   position: fixed;
   right: var(--px);
-  bottom: var(--px);
+  bottom: 3rem;
   width: var(--top-form-toggler-size);
   height: var(--top-form-toggler-size);
   padding: 1rem;
@@ -571,6 +600,7 @@ textarea,
   justify-content: center;
   align-items: center;
   padding: 3rem 2rem;
+  text-align: center;
 
   color: var(--text-muted);
   .footer-container {

@@ -8,6 +8,7 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
       <Link to="/">
         <Logo />
       </Link>
+
       <div className="navbar-controls">
         <button className="signout button-md inverse" onClick={logOut}>
           Signout
