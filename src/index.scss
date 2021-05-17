@@ -22,6 +22,7 @@
   --z-bg-overlay: 500;
   --z-TopLevelArticleForm: 700;
   --z-form-toggle: 800;
+  --z-modal: 1000;
 }
 
 html {
@@ -206,6 +207,19 @@ textarea,
   }
 }
 
+.button-bg {
+  width: 100%;
+  background: var(--cl-blue);
+  padding: 1em 2em;
+  color: var(--text-inverse);
+  font-weight: bold;
+  &:hover,
+  &:focus {
+    background: var(--cl-blue-dark);
+    color: var(--text-inverse);
+  }
+}
+
 .button-danger {
   &:hover {
     color: var(--cl-danger);
@@ -228,6 +242,12 @@ textarea,
 .App {
   .app-main {
     padding: var(--px);
+  }
+
+  .footer {
+    color: var(--text-inverse);
+    padding: 2rem;
+    text-align: center;
   }
 }
 
@@ -362,5 +382,22 @@ textarea,
   }
   &.close-form {
     transform: rotate(45deg);
+  }
+}
+
+.ErrorModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cl-white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-modal);
+  p {
+    margin-bottom: 1em;
   }
 }

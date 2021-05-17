@@ -45,9 +45,8 @@ export const ArticlesProvider = ({ children }) => {
   useEffect(() => {
     const articlesRef = firebase.database().ref(userKey);
 
-    const unsubscribe = articlesRef.on(
-      'value',
-      (dataSnapshot) => {
+    const unsubscribe = articlesRef.on('value', (dataSnapshot) => {
+      try {
         const data = dataSnapshot.val();
         console.log(data);
 
@@ -57,11 +56,10 @@ export const ArticlesProvider = ({ children }) => {
         }));
 
         setArticles(currentArticles);
-      },
-      (err) => {
-        setError('Network Error. Please try again.');
+      } catch (err) {
+        setError('Network Error. Try refreshing the page.');
       }
-    );
+    });
     return unsubscribe;
   }, []);
 

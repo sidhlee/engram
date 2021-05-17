@@ -1,15 +1,12 @@
 import Masonry from 'react-masonry-css';
 import Topic from './Topic';
-import { useArticles } from '../context/articlesContext';
 
 /**
  * @component
  * @param {{topicsOfArticles: import('../context/articlesContext.js').TopicsOfArticles}}
  * @returns
  */
-const TopicList = () => {
-  const { topicsOfArticles, deleteArticles } = useArticles();
-
+const TopicList = ({ topicsOfArticles, deleteArticles }) => {
   const topicComponents = Object.entries(topicsOfArticles).map(
     ([topicName, articlesByTopic]) => (
       <Topic
