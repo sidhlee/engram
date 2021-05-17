@@ -41,6 +41,7 @@ $mobile: 400px;
 
 html {
   box-sizing: border-box;
+  font-size: Min(Max(95%, calc(1vw + 3px)), 125%);
 }
 *,
 *::before,
