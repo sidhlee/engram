@@ -4,7 +4,7 @@ $mobile: 500px;
 :root {
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
-  --cl-accent: #00bcd4;
+  --cl-accent: rgb(2, 174, 197);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3f51b5;
 
@@ -16,6 +16,8 @@ $mobile: 500px;
   --cl-danger: red;
   --cl-white: white;
   --cl-off-white: #f8f8ff;
+  --cl-link-hover: #1a8ee2;
+  --cl-link-hover: var(--cl-accent);
 
   --text-main: #333;
   --text-inverse: white;
@@ -103,7 +105,7 @@ a {
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: var(--cl-blue);
+    color: var(--cl-link-hover);
   }
 }
 
@@ -345,9 +347,22 @@ textarea,
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+// Animations
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 // Components
 
 .App {
+  opacity: 0;
+  animation: fade-in 1s forwards ease-in-out;
   .app-main {
     padding: 3rem var(--px) 4rem;
     min-height: 100vh;
@@ -425,6 +440,8 @@ textarea,
       margin-bottom: 0.5em;
     }
     .topic-controls {
+      position: relative;
+      bottom: 0.25rem;
       display: flex;
     }
   }
@@ -437,7 +454,7 @@ textarea,
 .Article {
   padding: 0.5rem;
   background: var(--cl-white);
-  border: 1px solid var(--text-main);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   &:not(:last-of-type) {
     margin-bottom: 1rem;
