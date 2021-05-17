@@ -5,12 +5,11 @@ import ArticleTitle from './ArticleTitle';
 import ArticleNote from './ArticleNote';
 import ConfirmationAlert from './ConfirmationAlert';
 
-const Article = ({ id, title, href, stars, read, note }) => {
+const Article = ({ id, userId, title, href, stars, read, note }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showNote, setShowNote] = useState(false);
 
   const updateStars = async (updatedStars) => {
-    console.log('updateStars', id, updatedStars, stars);
     // Ignore if stars falls out of range
     if (updatedStars < 0 || updatedStars > 5) return;
 
@@ -18,17 +17,17 @@ const Article = ({ id, title, href, stars, read, note }) => {
     if (updatedStars === stars && stars !== 0) {
       return firebase
         .database()
-        .ref(`demo/${id}/stars`)
+        .ref(`${userId}/${id}/stars`)
         .set(stars - 1);
     }
-    const starsRef = firebase.database().ref(`demo/${id}/stars`);
+    const starsRef = firebase.database().ref(`${userId}/${id}/stars`);
     starsRef.set(updatedStars);
   };
 
   const incrementRead = () => {
     firebase
       .database()
-      .ref(`demo/${id}/read`)
+      .ref(`${userId}/${id}/read`)
       .set(read + 1);
   };
 
@@ -37,7 +36,7 @@ const Article = ({ id, title, href, stars, read, note }) => {
     if (read === 0) return;
     firebase
       .database()
-      .ref(`demo/${id}/read`)
+      .ref(`${userId}/${id}/read`)
       .set(read - 1);
   };
 
@@ -51,7 +50,7 @@ const Article = ({ id, title, href, stars, read, note }) => {
 
   const deleteArticle = async () => {
     try {
-      firebase.database().ref(`demo/${id}/deleted`).set(true);
+      firebase.database().ref(`${userId}/${id}/deleted`).set(true);
       setShowDeleteConfirm(false);
     } catch (err) {
       console.log(err);

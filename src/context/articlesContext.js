@@ -51,14 +51,17 @@ export const ArticlesProvider = ({ children }) => {
     const unsubscribe = articlesRef.on('value', (dataSnapshot) => {
       setLoading(false);
       try {
-        const data = dataSnapshot.val();
-        const currentArticles = Object.entries(data).map(([key, val]) => ({
-          ...val,
-          id: key,
-        }));
+        const data = dataSnapshot?.val();
+        if (data) {
+          const currentArticles = Object.entries(data).map(([key, val]) => ({
+            ...val,
+            id: key,
+          }));
 
-        setArticles(currentArticles);
+          setArticles(currentArticles);
+        }
       } catch (err) {
+        console.log(err);
         setError('Network Error. Try refreshing the page.');
       }
     });

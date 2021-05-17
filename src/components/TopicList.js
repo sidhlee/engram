@@ -6,13 +6,14 @@ import Topic from './Topic';
  * @param {{topicsOfArticles: import('../context/articlesContext.js').TopicsOfArticles}}
  * @returns
  */
-const TopicList = ({ topicsOfArticles, deleteArticles }) => {
+const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
   const topicComponents = Object.entries(topicsOfArticles).map(
     ([topicName, articlesByTopic]) => (
       <Topic
         key={topicName}
         articles={articlesByTopic}
         deleteArticles={deleteArticles}
+        userId={userId}
       />
     )
   );

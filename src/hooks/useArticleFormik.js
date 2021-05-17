@@ -34,8 +34,6 @@ export default function useArticleFormik(topic, onSubmitCallback) {
       ['articleTitle', 'articleUrl']
     ),
     onSubmit: (values) => {
-      console.log(values);
-
       /** @type {import('../App').Article} */
       const article = {
         createdAt: Date.now(),

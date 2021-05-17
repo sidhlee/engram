@@ -9,7 +9,7 @@ import ConfirmationAlert from './ConfirmationAlert';
  * @component
  * @param {{articles: import('../context/articlesContext.js').StateArticle}}
  */
-const Topic = ({ articles, deleteArticles }) => {
+const Topic = ({ articles, deleteArticles, userId }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -80,6 +80,7 @@ const Topic = ({ articles, deleteArticles }) => {
               note={note}
               href={href}
               id={id}
+              userId={userId}
             />
           ) : null;
         })}

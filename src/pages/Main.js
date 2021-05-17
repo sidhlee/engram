@@ -10,7 +10,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Main = () => {
-  // console.log('[Main]');
   const { topicsOfArticles, deleteArticles, error, clearError, loading } =
     useArticles();
 
@@ -51,6 +50,7 @@ const Main = () => {
             <TopicList
               topicsOfArticles={topicsOfArticles}
               deleteArticles={deleteArticles}
+              userId={user.id}
             />
             <TopLevelArticleForm />
           </>
