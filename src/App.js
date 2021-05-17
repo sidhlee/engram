@@ -2,7 +2,6 @@ import Main from './pages/Main';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import LogIn from './pages/LogIn';
 import { useAuth } from './context/authContext';
-import { ArticlesProvider } from './context/articlesContext';
 
 function App() {
   const { user } = useAuth();
@@ -15,9 +14,7 @@ function App() {
       </Route>
       {user && (
         <Route path="/" exact>
-          <ArticlesProvider>
-            <Main />
-          </ArticlesProvider>
+          <Main />
         </Route>
       )}
       <Redirect to="/login" />
