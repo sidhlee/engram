@@ -41,11 +41,13 @@ export const ArticlesProvider = ({ children }) => {
    */
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const articlesRef = firebase.database().ref(userKey);
 
     const unsubscribe = articlesRef.on('value', (dataSnapshot) => {
+      setLoading(false);
       try {
         const data = dataSnapshot.val();
         console.log(data);
@@ -123,6 +125,7 @@ export const ArticlesProvider = ({ children }) => {
     topicsOfArticles,
     addArticle,
     deleteArticles,
+    loading,
     error,
     clearError,
   };
