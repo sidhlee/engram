@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -15,7 +16,11 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
-export default firebase;
+// To enable auth with Google, you have to set it up in the firebase console
+// https://stackoverflow.com/questions/41124178/com-google-firebase-firebaseexception-an-internal-error-has-occurred-configu
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const auth = app.auth();
+export default app;

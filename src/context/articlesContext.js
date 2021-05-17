@@ -50,7 +50,7 @@ export const ArticlesProvider = ({ children }) => {
       setLoading(false);
       try {
         const data = dataSnapshot.val();
-        console.log(data);
+        // console.log(data);
 
         const currentArticles = Object.entries(data).map(([key, val]) => ({
           ...val,
