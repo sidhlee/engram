@@ -7,6 +7,7 @@ import Spinner from '../components/Spinner';
 import { useAuth } from '../context/authContext';
 import { useHistory } from 'react-router';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Main = () => {
   // console.log('[Main]');
@@ -55,11 +56,8 @@ const Main = () => {
           </>
         )}
       </main>
+      <Footer />
       {error && <ErrorModal error={error} clearError={clearError} />}
-      <footer className="footer">
-        &copy; {new Date().getFullYear()} Created by Sid Hayoun Lee at Juno
-        College
-      </footer>
     </div>
   );
 };
