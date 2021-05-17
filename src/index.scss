@@ -349,7 +349,7 @@ textarea,
 
 .App {
   .app-main {
-    padding: 4rem var(--px) 6rem;
+    padding: 3rem var(--px) 4rem;
     min-height: 100vh;
     @media (max-width: $mobile) {
       padding: 1rem 2px 4rem;
@@ -603,7 +603,7 @@ textarea,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 2rem;
   text-align: center;
 
   color: var(--text-muted);
