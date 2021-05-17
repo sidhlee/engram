@@ -49,6 +49,7 @@ const Main = () => {
         userImgURL={user.photoURL}
         userName={user.name}
         logOut={logOut}
+        closeMenu={() => setIsMenuOpen(false)}
       />
       <header>
         <Navbar
