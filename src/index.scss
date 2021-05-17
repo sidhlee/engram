@@ -1,4 +1,5 @@
 $desktop: 1200px;
+$mobile: 400px;
 
 :root {
   --cl-yellow: #eaae00;
@@ -21,7 +22,7 @@ $desktop: 1200px;
   --text-muted: #838383;
 
   // spacing
-  --px: 2rem;
+  --px: Min(Max(0.25rem, 4vw), 4rem);
   --gutter: 1rem;
 
   // dimensions
@@ -335,6 +336,9 @@ textarea,
   .app-main {
     padding: 4rem var(--px) 6rem;
     min-height: 100vh;
+    @media (max-width: $mobile) {
+      padding: 1rem 2px 4rem;
+    }
   }
 
   .footer {
@@ -382,6 +386,9 @@ textarea,
     span {
       position: relative;
       top: 0.1em;
+    }
+    @media (max-width: $mobile) {
+      font-size: 1.75rem;
     }
   }
 }
