@@ -9,21 +9,23 @@ function App() {
   const { user } = useAuth();
 
   return (
-    <Switch>
-      {/* Default route */}
-      <Route path="/login">
-        <LogIn />
-      </Route>
-      {/* Only available when the user is authenticated */}
-      <ProtectedRoute path="/" exact authenticated={user}>
-        <Main />
-      </ProtectedRoute>
-      <ProtectedRoute path="/about" exact authenticated={user}>
-        <About />
-      </ProtectedRoute>
-      {/* All other routes will be redirected to login page */}
-      <Redirect to="/login" />
-    </Switch>
+    <>
+      <Switch>
+        {/* Default route */}
+        <Route path="/login">
+          <LogIn />
+        </Route>
+        {/* Only available when the user is authenticated */}
+        <ProtectedRoute path="/" exact authenticated={user}>
+          <Main />
+        </ProtectedRoute>
+        <ProtectedRoute path="/about" exact authenticated={user}>
+          <About />
+        </ProtectedRoute>
+        {/* All other routes will be redirected to login page */}
+        <Redirect to="/login" />
+      </Switch>
+    </>
   );
 }
 

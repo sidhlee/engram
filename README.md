@@ -113,3 +113,4 @@ const validationSchema = yup.object().shape(
 ## Reference
 
 - [Authentication with Firebase in React - GitHub Repo](https://github.com/WebDevSimplified/React-Firebase-Auth)
+- [Search-optimized SPAs with React Helmet](https://blog.logrocket.com/search-optimized-spas-react-helmet/)
