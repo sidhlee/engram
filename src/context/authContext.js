@@ -79,8 +79,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     try {
       const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
-        console.log(firebaseUser);
-
         if (firebaseUser) {
           // User logged in! handpick data we need.
           const {
