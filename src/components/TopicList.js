@@ -1,3 +1,4 @@
+import orderBy from 'lodash.orderby';
 import Masonry from 'react-masonry-css';
 import Topic from './Topic';
 
@@ -11,10 +12,16 @@ const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
 
   const topicComponents = sortedTopics.map((topicName) => {
     const articlesByTopic = topicsOfArticles[topicName];
+    // https://lodash.com/docs/4.17.15#orderBy
+    const topicArticlesSortedByDate = orderBy(
+      articlesByTopic,
+      ['createdAt'],
+      ['desc']
+    );
     return (
       <Topic
         key={topicName}
-        articles={articlesByTopic}
+        articles={topicArticlesSortedByDate}
         deleteArticles={deleteArticles}
         userId={userId}
       />

@@ -1,5 +1,5 @@
 import Article from './Article';
-import orderBy from 'lodash.orderby';
+
 import { useState } from 'react';
 import ArticleForm from './ArticleForm';
 import ConfirmationAlert from './ConfirmationAlert';
@@ -14,8 +14,6 @@ const Topic = ({ articles, deleteArticles, userId }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const topic = articles[0].topic;
-  // https://lodash.com/docs/4.17.15#orderBy
-  const articlesSortedByDate = orderBy(articles, ['createdAt'], ['desc']);
 
   const removeTopicAndAllArticles = () => {
     deleteArticles(articles);
@@ -53,7 +51,7 @@ const Topic = ({ articles, deleteArticles, userId }) => {
         />
       )}
       <ul>
-        {articlesSortedByDate.map((article) => {
+        {articles.map((article) => {
           const { title, stars, read, note, href, deleted, id } = article;
           return !deleted ? (
             <Article
