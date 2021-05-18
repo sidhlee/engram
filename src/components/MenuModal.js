@@ -1,5 +1,6 @@
 import React from 'react';
 import BgOverlay from './BgOverlay';
+import { Link } from 'react-router-dom';
 
 function MenuModal({ userImgURL, userName, logOut, isMenuOpen, closeMenu }) {
   return (
@@ -12,6 +13,9 @@ function MenuModal({ userImgURL, userName, logOut, isMenuOpen, closeMenu }) {
           <div className="user-name">
             <span>{userName}</span>
           </div>
+          <Link className="button-md inverse accent about" to="/about">
+            What is Engram?
+          </Link>
           <button className="signout" onClick={logOut}>
             Sign Out
           </button>

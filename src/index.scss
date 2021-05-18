@@ -1,5 +1,5 @@
 $desktop: 1200px;
-$mobile: 500px;
+$mobile: 700px;
 
 :root {
   // colors
@@ -209,6 +209,9 @@ textarea,
   display: flex;
   margin-left: -30px; /* gutter size offset */
   width: auto;
+  @media (max-width: $mobile) {
+    margin-left: 0;
+  }
 }
 .my-masonry-grid_column {
   padding-left: var(--gutter); /* gutter size */
@@ -245,6 +248,10 @@ textarea,
 
 .nowrap {
   white-space: nowrap;
+}
+
+.accent {
+  color: var(--cl-accent) !important;
 }
 
 /* ========================= 
@@ -310,6 +317,7 @@ textarea,
   align-items: center;
   font-size: 1.2rem;
   padding: 0.25em 0.5em;
+  color: var(--text-muted);
   span {
     display: block;
     line-height: 0; // remove empty space at the bottom
@@ -447,7 +455,7 @@ textarea,
   right: 0;
   bottom: 0;
   width: 60%;
-  min-width: 300px;
+  min-width: 260px;
   background: var(--cl-primary-dark);
 
   transition: all 200ms ease-in-out;
@@ -476,10 +484,13 @@ textarea,
     font-size: 2rem;
     color: var(--text-inverse);
   }
+  .about {
+    font-size: 1.2rem;
+  }
 
   .signout {
     margin-top: 4rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: white;
     opacity: 0.8;
     &:hover,
@@ -539,6 +550,7 @@ textarea,
 }
 
 .Topic {
+  width: 100%;
   max-width: 520px;
   margin: 0 auto var(--gutter);
   padding: 1rem;
@@ -830,6 +842,51 @@ textarea,
           font-size: 0.75rem;
         }
       }
+    }
+  }
+}
+
+.About {
+  color: var(--text-inverse);
+  padding: 3rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 3fr);
+  grid-template-rows: auto auto 6rem 300px;
+  max-width: 700px;
+  margin: 0 auto;
+
+  .wiki {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    margin-bottom: 2rem;
+    h2 {
+      font-family: serif;
+    }
+    blockquote {
+      padding-left: 1rem;
+    }
+    figcaption {
+      padding-left: 3rem;
+    }
+  }
+  .what-is {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    font-size: 1.25rem;
+  }
+  .back-to-main {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    place-self: center;
+  }
+  .illust-container {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+    place-self: center;
+    svg {
+      width: 100%;
+      max-width: 400px;
+      max-height: 300px;
     }
   }
 }
