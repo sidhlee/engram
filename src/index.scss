@@ -5,7 +5,7 @@ $mobile: 700px;
   // colors
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
-  --cl-accent: rgb(2, 174, 197);
+  --cl-accent: rgb(2, 192, 218);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3f51b5;
 
@@ -71,6 +71,13 @@ body {
   color: var(--text-main);
   min-height: 100vh;
   min-height: -webkit-fill-available;
+}
+
+h1,
+h2,
+h3,
+p {
+  line-height: 1.4;
 }
 
 img {
@@ -334,6 +341,7 @@ textarea,
   background: var(--cl-blue);
   padding: 1em 2em;
   color: var(--text-inverse);
+  font-size: 1.2rem;
   font-weight: bold;
   &:hover,
   &:focus {
@@ -454,8 +462,8 @@ textarea,
   top: 0;
   right: 0;
   bottom: 0;
-  width: 60%;
-  min-width: 260px;
+  width: 75%;
+  max-width: 350px;
   background: var(--cl-primary-dark);
 
   transition: all 200ms ease-in-out;
@@ -473,8 +481,9 @@ textarea,
 
   .user-img {
     img {
-      width: 25vw;
-      height: 25vw;
+      --size: Min(Max(80px, 20vw), 120px);
+      width: var(--size);
+      height: var(--size);
       border-radius: 50%;
     }
   }
@@ -544,7 +553,7 @@ textarea,
       top: 0.1em;
     }
     @media (max-width: $mobile) {
-      font-size: 1.75rem;
+      font-size: 2rem;
     }
   }
 }
@@ -850,6 +859,7 @@ textarea,
   color: var(--text-inverse);
   padding: 3rem 1rem;
   display: grid;
+  gap: 1rem;
   grid-template-columns: 1fr minmax(260px, 3fr);
   grid-template-rows: auto auto 6rem 300px;
   max-width: 700px;
@@ -882,11 +892,13 @@ textarea,
   .illust-container {
     grid-column: 1 / -1;
     grid-row: 4 / 5;
-    place-self: center;
+    justify-self: center;
+    position: relative;
+    right: Min(Max(0px, 3vw), 5rem);
+    padding-top: 2rem;
     svg {
-      width: 100%;
-      max-width: 400px;
-      max-height: 300px;
+      width: Min(Max(300px, 50vw), 600px);
+      height: Min(Max(250px, 30vw), 400px);
     }
   }
 }

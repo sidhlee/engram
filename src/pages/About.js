@@ -24,11 +24,11 @@ function About() {
       <div className="what-is">
         <Logo />
         <p>
-          is a personal tracking system for online learning resources. You can
-          use Engram to bookmark your favorite articles and tutorials, rate them
-          and record how many times you visited them. Your understanding of the
-          topic will become stronger with each repetition. No more losing track
-          of countless read-later bookmarks!
+          is a personal tracking system for online learning resources. Use
+          Engram to bookmark your favorite articles and tutorials, rate them and
+          create a side note. You'll have a deeper understanding of the topic
+          each time you revisit them. 💪 🧠 💡 <br />
+          No more losing track of countless read-later links!
         </p>
       </div>
       <div className="back-to-main">
