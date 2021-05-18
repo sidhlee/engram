@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 import { useRef, useState } from 'react';
-import firebase from '../config/firebase';
+import firebase from '../../config/firebase';
 
 const ArticleNote = ({ note, articleId }) => {
   const [noteText, setNoteText] = useState(note);

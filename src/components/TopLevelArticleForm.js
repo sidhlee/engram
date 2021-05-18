@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import ArticleForm from './ArticleForm';
+import ArticleForm from './Article/ArticleForm';
 import BgOverlay from './BgOverlay';
 
 const TopLevelArticleForm = () => {

@@ -1,13 +1,13 @@
-import Article from './Article';
+import Article from '../Article/Article';
 
 import { useState } from 'react';
-import ArticleForm from './ArticleForm';
-import ConfirmationAlert from './ConfirmationAlert';
+import ArticleForm from '../Article/ArticleForm';
+import ConfirmationAlert from '../ConfirmationAlert';
 import TopicHeader from './TopicHeader';
 
 /**
  * @component
- * @param {{articles: import('../context/articlesContext.js').StateArticle}}
+ * @param {{articles: import('../../context/articlesContext.js').StateArticle}}
  */
 const Topic = ({ articles, deleteArticles, userId }) => {
   const [showAddForm, setShowAddForm] = useState(false);

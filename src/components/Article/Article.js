@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import firebase from '../config/firebase';
+import firebase from '../../config/firebase';
 import ArticleControls from './ArticleControls';
 import ArticleTitle from './ArticleTitle';
 import ArticleNote from './ArticleNote';
-import ConfirmationAlert from './ConfirmationAlert';
+import ConfirmationAlert from '../ConfirmationAlert';
 
 const Article = ({ id, userId, title, href, stars, read, note }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);

@@ -1,5 +1,5 @@
-import FormInput from './FormInput';
-import useArticleFormik from '../hooks/useArticleFormik';
+import FormInput from '../FormInput';
+import useArticleFormik from '../../hooks/useArticleFormik';
 
 const ArticleForm = ({ className, topic, closeForm }) => {
   const formik = useArticleFormik(topic, closeForm);

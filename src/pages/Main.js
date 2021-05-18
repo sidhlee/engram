@@ -1,6 +1,6 @@
 import { ArticlesProvider } from '../context/articlesContext';
 import TopLevelArticleForm from '../components/TopLevelArticleForm';
-import TopicList from '../components/TopicList';
+import TopicList from '../components/Topic/TopicList';
 import { useArticles } from '../context/articlesContext';
 import ErrorModal from '../components/ErrorModal';
 import Spinner from '../components/Spinner';

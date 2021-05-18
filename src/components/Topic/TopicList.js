@@ -4,7 +4,7 @@ import Topic from './Topic';
 
 /**
  * @component
- * @param {{topicsOfArticles: import('../context/articlesContext.js').TopicsOfArticles}}
+ * @param {{topicsOfArticles: import('../../context/articlesContext.js').TopicsOfArticles}}
  * @returns
  */
 const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
