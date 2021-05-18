@@ -1,9 +1,9 @@
 import Article from './Article';
 import orderBy from 'lodash.orderby';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import { useState } from 'react';
 import ArticleForm from './ArticleForm';
 import ConfirmationAlert from './ConfirmationAlert';
+import TopicHeader from './TopicHeader';
 
 /**
  * @component
@@ -32,27 +32,11 @@ const Topic = ({ articles, deleteArticles, userId }) => {
 
   return (
     <section className="Topic">
-      <header>
-        <h2 className="topic-name">{topic}</h2>
-        <div className="topic-controls">
-          <button
-            className="button-md article-remove"
-            onClick={handleDeleteTopicButtonClick}
-          >
-            <span aria-label="Remove topic and all included articles">
-              <FaMinus />
-            </span>
-          </button>
-          <button
-            className="button-md article-add"
-            onClick={handleAddArticleButtonClick}
-          >
-            <span aria-label="add article">
-              <FaPlus />
-            </span>
-          </button>
-        </div>
-      </header>
+      <TopicHeader
+        topic={topic}
+        handleAddArticleButtonClick={handleAddArticleButtonClick}
+        handleDeleteTopicButtonClick={handleDeleteTopicButtonClick}
+      />
       {showDeleteConfirm && (
         <ConfirmationAlert
           message="Delete topic and all articles?"

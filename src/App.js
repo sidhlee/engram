@@ -5,18 +5,19 @@ import { useAuth } from './context/authContext';
 
 function App() {
   const { user } = useAuth();
-  // console.log('[App] user', user);
 
   return (
     <Switch>
       <Route path="/login">
         <LogIn />
       </Route>
+      {/* Only available when the user is authenticated */}
       {user && (
         <Route path="/" exact>
           <Main />
         </Route>
       )}
+      {/* All other routes will be redirected to login page */}
       <Redirect to="/login" />
     </Switch>
   );

@@ -49,12 +49,8 @@ const Article = ({ id, userId, title, href, stars, read, note }) => {
   };
 
   const deleteArticle = async () => {
-    try {
-      firebase.database().ref(`${userId}/${id}/deleted`).set(true);
-      setShowDeleteConfirm(false);
-    } catch (err) {
-      console.log(err);
-    }
+    firebase.database().ref(`${userId}/${id}/deleted`).set(true);
+    setShowDeleteConfirm(false);
   };
 
   return (

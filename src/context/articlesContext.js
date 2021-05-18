@@ -61,7 +61,6 @@ export const ArticlesProvider = ({ children }) => {
           setArticles(currentArticles);
         }
       } catch (err) {
-        console.log(err);
         setError('Network Error. Try refreshing the page.');
       }
     });
