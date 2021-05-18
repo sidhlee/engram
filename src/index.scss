@@ -760,7 +760,7 @@ textarea,
   .footer-container {
     width: 62%;
     p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
     .credit {
       display: flex;
@@ -812,6 +812,9 @@ textarea,
         margin-top: 1em;
       }
     }
+    .copy {
+      font-size: 1rem;
+    }
   }
 
   @media (min-width: $desktop) {
@@ -822,12 +825,11 @@ textarea,
       // height: 80%;
       p {
         margin: 0;
-        font-size: 1rem;
       }
       .credit {
         width: 100%;
         max-width: 50rem;
-        margin: 3rem auto;
+        margin: 0 auto 3rem;
         flex-direction: row;
         .logo {
           flex-basis: 24%;
@@ -862,11 +864,11 @@ textarea,
 
 .About {
   color: var(--text-inverse);
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 0;
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr minmax(260px, 3fr);
-  grid-template-rows: auto auto 6rem 300px;
+  grid-template-rows: auto auto 6rem auto;
   max-width: 700px;
   margin: 0 auto;
 
@@ -900,13 +902,16 @@ textarea,
   .illust-container {
     grid-column: 1 / -1;
     grid-row: 4 / 5;
-    justify-self: center;
+    place-self: center;
+
+    // make illustration overlap on footer
     position: relative;
+    top: 2rem;
     right: Min(Max(0px, 3vw), 5rem);
-    padding-top: 2rem;
+
     svg {
       width: Min(Max(300px, 50vw), 600px);
-      height: Min(Max(250px, 30vw), 400px);
+      height: Min(Max(280px, 30vw), 400px);
     }
   }
 }
