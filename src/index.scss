@@ -7,6 +7,10 @@ $mobile: 700px;
   align-items: center;
 }
 
+@mixin fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
 :root {
   // colors
   --cl-yellow: #eaae00;
@@ -49,6 +53,7 @@ $mobile: 700px;
   --z-menu-button: 900;
   --z-menu-modal: 850;
 
+  --timing-spring: cubic-bezier(0.39, 0.64, 0.32, 1.1);
   @media (max-width: $mobile) {
     --top-form-toggler-size: 4rem;
   }
@@ -381,6 +386,28 @@ textarea,
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(-35%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes open-down {
+  0% {
+    opacity: 0.5;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
   }
 }
 
@@ -885,19 +912,30 @@ textarea,
     figcaption {
       padding-left: 3rem;
     }
+    @include fade-in;
   }
   .what-is {
     grid-column: 2 / 4;
     grid-row: 2 / 3;
     font-size: 1.25rem;
+    .Logo {
+      opacity: 0;
+      animation: fade-left 0.7s var(--timing-spring) forwards;
+      animation-delay: 0.5s;
+    }
     p {
       margin-top: 1em;
+      opacity: 0;
+      transform-origin: top;
+      animation: open-down 0.7s var(--timing-spring) forwards;
+      animation-delay: 1s;
     }
   }
   .back-to-main {
     grid-column: 1 / -1;
     grid-row: 3 / 4;
     place-self: center;
+    @include fade-in;
   }
   .illust-container {
     grid-column: 1 / -1;
@@ -913,5 +951,7 @@ textarea,
       width: Min(Max(300px, 50vw), 600px);
       height: Min(Max(280px, 30vw), 400px);
     }
+
+    @include fade-in;
   }
 }
