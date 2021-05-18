@@ -6,6 +6,7 @@ $mobile: 700px;
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
   --cl-accent: rgb(2, 192, 218);
+  --cl-accent-dark: rgb(0, 171, 194);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3f51b5;
 
@@ -17,7 +18,7 @@ $mobile: 700px;
   --cl-white: white;
   --cl-off-white: #f8f8ff;
   --cl-link-hover: #1a8ee2;
-  --cl-link-hover: var(--cl-accent);
+  --cl-link-hover: var(--cl-accent-dark);
 
   --text-main: #333;
   --text-inverse: white;
@@ -610,6 +611,11 @@ textarea,
     }
     button {
       font-size: 1rem;
+    }
+    .article-note {
+      &.not-empty {
+        color: var(--text-main);
+      }
     }
   }
   .article-note-text {
