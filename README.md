@@ -21,6 +21,11 @@ By updating state inside Firebase's value change listener, you're effectively sy
 
 - Added Redux then removed it because when you're working with firebase, almost all actions affecting global state will have side-effect (by mutating outside source - Firebase). Curious what would be the reason if someone's adding Redux into this equation.
 
+### Update authorized domains after deployment
+
+- Go to console > authentication > sign-in method > Authorized domains
+- Add app domain to allow authenticating from your deployed app.
+
 ## Reference
 
 - [Authentication with Firebase in React - GitHub Repo](https://github.com/WebDevSimplified/React-Firebase-Auth)

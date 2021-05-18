@@ -26,9 +26,9 @@ function About() {
         <p>
           is a personal tracking system for online learning resources. You can
           use Engram to bookmark your favorite articles and tutorials, rate them
-          with stars and increment counters to record how many times you visited
-          them. Your understanding of the topic will become stronger with each
-          repetition. No more losing track of countless read-later bookmarks!
+          and record how many times you visited them. Your understanding of the
+          topic will become stronger with each repetition. No more losing track
+          of countless read-later bookmarks!
         </p>
       </div>
       <div className="back-to-main">
