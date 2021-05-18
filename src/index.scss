@@ -400,7 +400,7 @@ textarea,
   }
 }
 
-@keyframes open-down {
+@keyframes unfold {
   0% {
     opacity: 0.5;
     transform: scaleY(0);
@@ -926,8 +926,7 @@ textarea,
     p {
       margin-top: 1em;
       opacity: 0;
-      transform-origin: top;
-      animation: open-down 0.7s var(--timing-spring) forwards;
+      animation: unfold 0.5s var(--timing-spring) forwards;
       animation-delay: 1s;
     }
   }
