@@ -385,8 +385,6 @@ textarea,
  * =========================== */
 
 .App {
-  opacity: 0;
-  animation: fade-in 1.5s forwards ease-in-out;
   .app-main {
     padding: 3rem var(--px) 4rem;
     min-height: 100vh;
@@ -556,6 +554,11 @@ textarea,
       font-size: 2rem;
     }
   }
+}
+
+.TopicList {
+  opacity: 0;
+  animation: fade-in 1.5s forwards ease-in-out;
 }
 
 .Topic {
