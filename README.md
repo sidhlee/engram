@@ -85,6 +85,25 @@ export default function useArticleFormik(topic, onSubmitCallback) {
 }
 ```
 
+### Yup for generating multiple error message for different validation errors
+
+```js
+const validationSchema = yup.object().shape(
+      {
+        topicName: yup.string().required('Topic is required'),
+        articleTitle: yup.string().required('Article name is required'),
+        articleUrl: yup
+          .string()
+          .matches(
+            // https://stackoverflow.com/a/3809435/13036807
+            /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+            'Not a valid URL'
+          )
+          .required('Article URL is required'),
+      }
+    ),
+```
+
 ### Align Functionalities with App Identity
 
 - What specific problem your app solve?
