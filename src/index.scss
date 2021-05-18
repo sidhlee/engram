@@ -73,7 +73,6 @@ body {
   min-height: -webkit-fill-available;
 }
 
-h1,
 h2,
 h3,
 p {
@@ -768,7 +767,7 @@ textarea,
       justify-content: space-between;
       align-items: center;
       p {
-        margin: 3rem auto;
+        margin: 2rem auto;
         a {
           transition: color 200ms ease;
           &:hover {
@@ -883,6 +882,9 @@ textarea,
     grid-column: 2 / 4;
     grid-row: 2 / 3;
     font-size: 1.25rem;
+    p {
+      margin-top: 1em;
+    }
   }
   .back-to-main {
     grid-column: 1 / -1;
