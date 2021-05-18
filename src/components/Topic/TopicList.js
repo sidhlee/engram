@@ -39,7 +39,7 @@ const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
 
   return (
     <Masonry
-      className="Topics my-masonry-grid"
+      className="TopicList my-masonry-grid"
       breakpointCols={breakpointColumnsObj}
       columnClassName="my-masonry-grid_column"
     >

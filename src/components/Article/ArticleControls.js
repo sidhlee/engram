@@ -4,6 +4,7 @@ import Stars from './Stars';
 const ArticleControls = ({
   stars,
   read,
+  note,
   updateStars,
   incrementRead,
   decrementRead,
@@ -29,7 +30,9 @@ const ArticleControls = ({
           Unread
         </button>
         <button
-          className="article-btn article-note"
+          className={`article-btn article-note${
+            note === '' ? '' : ' not-empty'
+          }`}
           type="button"
           onClick={toggleNote}
         >

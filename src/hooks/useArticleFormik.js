@@ -14,25 +14,18 @@ export default function useArticleFormik(topic, onSubmitCallback) {
     },
     // use .object().shape() instead of .object() to avoid cyclic dependency error.
     // https://github.com/jquense/yup/issues/79#issuecomment-704963538
-    validationSchema: yup.object().shape(
-      {
-        topicName: yup.string().required('Topic is required'),
-        // Requiring either of the two fields
-        // https://github.com/jquense/yup/issues/79#issuecomment-699605408
-        articleTitle: yup.string().when('articleUrl', {
-          is: (url) => !url || url.length === 0,
-          then: yup.string().required('Either article name or url is required'),
-          otherwise: yup.string(),
-        }),
-        articleUrl: yup.string().when('articleTitle', {
-          is: (title) => !title || title.length === 0,
-          then: yup.string().required('Either article name or url is required'),
-          otherwise: yup.string(),
-        }),
-        articleNote: yup.string(),
-      },
-      ['articleTitle', 'articleUrl']
-    ),
+    validationSchema: yup.object().shape({
+      topicName: yup.string().required('Topic is required'),
+      articleTitle: yup.string().required('Article name is required'),
+      articleUrl: yup
+        .string()
+        .matches(
+          // https://stackoverflow.com/a/3809435/13036807
+          /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/,
+          'Not a valid URL'
+        )
+        .required('Article URL is required'),
+    }),
     onSubmit: (values) => {
       /** @type {import('../App').Article} */
       const article = {

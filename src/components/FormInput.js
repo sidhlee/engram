@@ -1,4 +1,4 @@
-import ErrorMessage from './ErrorMessage';
+import InputErrorMessage from './Article/InputErrorMessage';
 
 const FormInput = ({ name, placeholder, formik, textarea, autoComplete }) => {
   const input = textarea ? (
@@ -29,7 +29,7 @@ const FormInput = ({ name, placeholder, formik, textarea, autoComplete }) => {
       </label>
       {input}
       {formik.touched[name] && formik.errors[name] && (
-        <ErrorMessage>{formik.errors[name]}</ErrorMessage>
+        <InputErrorMessage>{formik.errors[name]}</InputErrorMessage>
       )}
     </div>
   );

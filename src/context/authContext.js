@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth, googleProvider } from '../config/firebase';
+import firebase, { auth, googleProvider } from '../config/firebase';
 import guestImg from '../images/guest.png';
+import { getInitialArticlesFirebaseObject } from '../utils/getInitialArticles';
 
 /**
  * @typedef {object} User
@@ -36,7 +37,23 @@ export const AuthProvider = ({ children }) => {
 
       setUser(demoUser);
     } else {
-      return auth.signInWithPopup(googleProvider);
+      // Sign in using Google OAuth
+      return auth.signInWithPopup(googleProvider).then((result) => {
+        console.log(result);
+
+        const initialArticles = getInitialArticlesFirebaseObject();
+
+        const userId = result.user.uid;
+        // Pre-populate with instruction articles for new users
+        if (result.additionalUserInfo.isNewUser) {
+          try {
+            const articlesRef = firebase.database().ref(userId);
+            articlesRef.set(initialArticles);
+          } catch (err) {
+            setError('Could not set initial articles');
+          }
+        }
+      });
     }
 
     // If you used auth.signInWithRedirect method here,

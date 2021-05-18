@@ -56,12 +56,12 @@ function Footer() {
             </a>
           </div>
         </div>
+        <p className="copy">
+          {' '}
+          &copy; {new Date().getFullYear()} design &amp; code by{' '}
+          <span className="nowrap">Sid Hayoun Lee</span>
+        </p>
       </div>
-      <p>
-        {' '}
-        &copy; {new Date().getFullYear()} design &amp; code by{' '}
-        <span className="nowrap">Sid Hayoun Lee</span>
-      </p>
     </footer>
   );
 }

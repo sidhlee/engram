@@ -1,11 +1,22 @@
 $desktop: 1200px;
 $mobile: 700px;
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
 :root {
   // colors
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
-  --cl-accent: rgb(2, 174, 197);
+  --cl-accent: rgb(2, 192, 218);
+  --cl-accent-dark: rgb(0, 171, 194);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3f51b5;
 
@@ -17,7 +28,7 @@ $mobile: 700px;
   --cl-white: white;
   --cl-off-white: #f8f8ff;
   --cl-link-hover: #1a8ee2;
-  --cl-link-hover: var(--cl-accent);
+  --cl-link-hover: var(--cl-accent-dark);
 
   --text-main: #333;
   --text-inverse: white;
@@ -42,14 +53,15 @@ $mobile: 700px;
   --z-menu-button: 900;
   --z-menu-modal: 850;
 
+  --timing-spring: cubic-bezier(0.39, 0.64, 0.32, 1.1);
   @media (max-width: $mobile) {
-    --top-form-toggler-size: 3.5rem;
+    --top-form-toggler-size: 4rem;
   }
 }
 
 html {
   box-sizing: border-box;
-  font-size: Min(Max(95%, calc(1vw + 3px)), 125%);
+  font-size: Min(Max(100%, calc(1vw + 3px)), 125%);
   // https://css-tricks.com/css-fix-for-100vh-in-mobile-webkit/
   height: -webkit-fill-available;
 }
@@ -71,6 +83,12 @@ body {
   color: var(--text-main);
   min-height: 100vh;
   min-height: -webkit-fill-available;
+}
+
+h2,
+h3,
+p {
+  line-height: 1.4;
 }
 
 img {
@@ -288,8 +306,8 @@ textarea,
 
   .error-message {
     position: absolute;
-    font-size: 0.9em;
-    bottom: -1.1em;
+    font-size: 0.88em;
+    bottom: -1.25em;
     left: 1em;
     color: var(--cl-error);
   }
@@ -312,9 +330,7 @@ textarea,
 }
 
 .button-md {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   font-size: 1.2rem;
   padding: 0.25em 0.5em;
   color: var(--text-muted);
@@ -334,6 +350,7 @@ textarea,
   background: var(--cl-blue);
   padding: 1em 2em;
   color: var(--text-inverse);
+  font-size: 1.2rem;
   font-weight: bold;
   &:hover,
   &:focus {
@@ -372,13 +389,33 @@ textarea,
   }
 }
 
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(-35%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes open-down {
+  0% {
+    opacity: 0.5;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
 /* ========================= 
  *  REACT COMPONENTS
  * =========================== */
 
 .App {
-  opacity: 0;
-  animation: fade-in 1.5s forwards ease-in-out;
   .app-main {
     padding: 3rem var(--px) 4rem;
     min-height: 100vh;
@@ -454,8 +491,8 @@ textarea,
   top: 0;
   right: 0;
   bottom: 0;
-  width: 60%;
-  min-width: 260px;
+  width: 75%;
+  max-width: 350px;
   background: var(--cl-primary-dark);
 
   transition: all 200ms ease-in-out;
@@ -466,15 +503,14 @@ textarea,
     transform: translate3d(0%, 0, 0);
   }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   text-align: center;
 
   .user-img {
     img {
-      width: 25vw;
-      height: 25vw;
+      --size: Min(Max(80px, 20vw), 120px);
+      width: var(--size);
+      height: var(--size);
       border-radius: 50%;
     }
   }
@@ -521,9 +557,7 @@ textarea,
     padding: 0.25em 0.5em;
     font-size: 1.2rem;
     color: var(--text-inverse);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
   }
 
   .user-img {
@@ -544,16 +578,21 @@ textarea,
       top: 0.1em;
     }
     @media (max-width: $mobile) {
-      font-size: 1.75rem;
+      font-size: 2rem;
     }
   }
+}
+
+.TopicList {
+  opacity: 0;
+  animation: fade-in 1.2s forwards ease-in-out;
 }
 
 .Topic {
   width: 100%;
   max-width: 520px;
   margin: 0 auto var(--gutter);
-  padding: 1rem;
+  padding: Min(Max(0.1rem, 1.8vw), 1rem);
   background: var(--cl-off-white);
   border-radius: var(--border-radius);
   header {
@@ -603,6 +642,11 @@ textarea,
     button {
       font-size: 1rem;
     }
+    .article-note {
+      &.not-empty {
+        color: var(--text-main);
+      }
+    }
   }
   .article-note-text {
     width: 100%;
@@ -630,9 +674,7 @@ textarea,
 }
 
 .ConfirmationAlert {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   padding: 0.5rem;
   p {
     color: var(--cl-danger);
@@ -712,10 +754,8 @@ textarea,
   transform: translate(-50%, -50%);
   background: var(--cl-white);
   padding: 2rem;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: var(--z-modal);
   p {
     margin-bottom: 1em;
@@ -724,10 +764,8 @@ textarea,
 
 .LogIn {
   height: 100vh;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 
   .login-buttons {
@@ -739,11 +777,9 @@ textarea,
 }
 
 .Footer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.87) 0%, #232222 100%);
-  display: flex;
+  background: black;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 4rem 2rem;
   text-align: center;
 
@@ -751,7 +787,7 @@ textarea,
   .footer-container {
     width: 62%;
     p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
     .credit {
       display: flex;
@@ -759,7 +795,7 @@ textarea,
       justify-content: space-between;
       align-items: center;
       p {
-        margin: 3rem auto;
+        margin: 2rem auto;
         a {
           transition: color 200ms ease;
           &:hover {
@@ -803,6 +839,9 @@ textarea,
         margin-top: 1em;
       }
     }
+    .copy {
+      font-size: 1rem;
+    }
   }
 
   @media (min-width: $desktop) {
@@ -813,12 +852,11 @@ textarea,
       // height: 80%;
       p {
         margin: 0;
-        font-size: 1rem;
       }
       .credit {
         width: 100%;
         max-width: 50rem;
-        margin: 3rem auto;
+        margin: 0 auto 3rem;
         flex-direction: row;
         .logo {
           flex-basis: 24%;
@@ -846,12 +884,18 @@ textarea,
   }
 }
 
+.about-wrapper {
+  min-height: 100vh;
+  @include flex-center;
+}
+
 .About {
   color: var(--text-inverse);
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 0;
   display: grid;
+  gap: 1rem;
   grid-template-columns: 1fr minmax(260px, 3fr);
-  grid-template-rows: auto auto 6rem 300px;
+  grid-template-rows: auto auto 6rem auto;
   max-width: 700px;
   margin: 0 auto;
 
@@ -868,25 +912,46 @@ textarea,
     figcaption {
       padding-left: 3rem;
     }
+    @include fade-in;
   }
   .what-is {
     grid-column: 2 / 4;
     grid-row: 2 / 3;
     font-size: 1.25rem;
+    .Logo {
+      opacity: 0;
+      animation: fade-left 0.7s var(--timing-spring) forwards;
+      animation-delay: 0.5s;
+    }
+    p {
+      margin-top: 1em;
+      opacity: 0;
+      transform-origin: top;
+      animation: open-down 0.7s var(--timing-spring) forwards;
+      animation-delay: 1s;
+    }
   }
   .back-to-main {
     grid-column: 1 / -1;
     grid-row: 3 / 4;
     place-self: center;
+    @include fade-in;
   }
   .illust-container {
     grid-column: 1 / -1;
     grid-row: 4 / 5;
     place-self: center;
+
+    // make illustration overlap on footer
+    position: relative;
+    top: 2rem;
+    right: Min(Max(0px, 3vw), 5rem);
+
     svg {
-      width: 100%;
-      max-width: 400px;
-      max-height: 300px;
+      width: Min(Max(300px, 50vw), 600px);
+      height: Min(Max(280px, 30vw), 400px);
     }
+
+    @include fade-in;
   }
 }

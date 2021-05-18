@@ -58,7 +58,6 @@ const Article = ({ id, userId, title, href, stars, read, note }) => {
       <ArticleTitle href={href} title={title} />
       <ArticleControls
         stars={stars}
-        href={href}
         read={read}
         note={note}
         updateStars={(stars) => updateStars(stars)}
