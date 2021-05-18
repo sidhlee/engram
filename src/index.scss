@@ -1,6 +1,12 @@
 $desktop: 1200px;
 $mobile: 700px;
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 :root {
   // colors
   --cl-yellow: #eaae00;
@@ -319,9 +325,7 @@ textarea,
 }
 
 .button-md {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   font-size: 1.2rem;
   padding: 0.25em 0.5em;
   color: var(--text-muted);
@@ -472,9 +476,7 @@ textarea,
     transform: translate3d(0%, 0, 0);
   }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   text-align: center;
 
   .user-img {
@@ -528,9 +530,7 @@ textarea,
     padding: 0.25em 0.5em;
     font-size: 1.2rem;
     color: var(--text-inverse);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
   }
 
   .user-img {
@@ -558,7 +558,7 @@ textarea,
 
 .TopicList {
   opacity: 0;
-  animation: fade-in 1.5s forwards ease-in-out;
+  animation: fade-in 1.2s forwards ease-in-out;
 }
 
 .Topic {
@@ -647,9 +647,7 @@ textarea,
 }
 
 .ConfirmationAlert {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   padding: 0.5rem;
   p {
     color: var(--cl-danger);
@@ -729,10 +727,8 @@ textarea,
   transform: translate(-50%, -50%);
   background: var(--cl-white);
   padding: 2rem;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: var(--z-modal);
   p {
     margin-bottom: 1em;
@@ -741,10 +737,8 @@ textarea,
 
 .LogIn {
   height: 100vh;
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 
   .login-buttons {
@@ -756,11 +750,9 @@ textarea,
 }
 
 .Footer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.87) 0%, #232222 100%);
-  display: flex;
+  background: black;
+  @include flex-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 4rem 2rem;
   text-align: center;
 
@@ -861,6 +853,11 @@ textarea,
       }
     }
   }
+}
+
+.about-wrapper {
+  min-height: 100vh;
+  @include flex-center;
 }
 
 .About {
