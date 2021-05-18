@@ -1,4 +1,3 @@
-import orderBy from 'lodash.orderby';
 import Masonry from 'react-masonry-css';
 import Topic from './Topic';
 
@@ -21,16 +20,6 @@ const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
       />
     );
   });
-  // const topicComponents = Object.entries(topicsOfArticles).map(
-  //   ([topicName, articlesByTopic]) => (
-  //     <Topic
-  //       key={topicName}
-  //       articles={articlesByTopic}
-  //       deleteArticles={deleteArticles}
-  //       userId={userId}
-  //     />
-  //   )
-  // );
 
   // https://www.npmjs.com/package/react-masonry-css
   const breakpointColumnsObj = {
