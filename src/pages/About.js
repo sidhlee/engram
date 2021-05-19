@@ -55,6 +55,7 @@ function About() {
             </Link>
           </div>
           <div className="illust-container">
+            {/* Source: undraw.co */}
             <Illust className="illust" />
           </div>
         </div>

@@ -418,6 +418,18 @@ textarea,
   }
 }
 
+@keyframes mid-air {
+  0% {
+    transform: perspective(150px) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: perspective(150px) translate3d(3px, 1px, -1px);
+  }
+  100% {
+    transform: perspective(150px) translate3d(0, 0, 0);
+  }
+}
+
 /* ========================= 
  *  REACT COMPONENTS
  * =========================== */
@@ -956,8 +968,11 @@ textarea,
     svg {
       width: Min(Max(300px, 50vw), 600px);
       height: Min(Max(280px, 30vw), 400px);
+      filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
     }
 
-    @include fade-in;
+    animation: mid-air 4s infinite ease-in-out;
+
+    // @include fade-in;
   }
 }
