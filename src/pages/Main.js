@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { ArticlesProvider } from '../context/articlesContext';
 import TopLevelArticleForm from '../components/TopLevelArticleForm';
 import TopicList from '../components/Topic/TopicList';
@@ -11,7 +12,6 @@ import Footer from '../components/Footer';
 import { useState } from 'react';
 import MenuButton from '../components/MenuButton';
 import MenuModal from '../components/MenuModal';
-import SEO from '../components/SEO';
 
 const Main = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,7 +41,9 @@ const Main = () => {
   };
   return (
     <div className="App">
-      <SEO title={'Engram | Main'} />
+      <Helmet>
+        <title>Engram | Main</title>
+      </Helmet>
 
       <MenuButton
         toggleMenu={() => setIsMenuOpen((show) => !show)}

@@ -2,12 +2,14 @@ import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Illust } from '../images/undraw_Calendar_re_ki49.svg';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
+import { Helmet } from 'react-helmet';
 
 function About() {
   return (
     <>
-      <SEO title={'Engram | About'} />
+      <Helmet>
+        <title>Engram | About</title>
+      </Helmet>
       <div className="about-wrapper">
         <div className={`About`}>
           <div className="wiki">
