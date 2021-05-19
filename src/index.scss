@@ -234,6 +234,9 @@ textarea,
 .my-masonry-grid_column {
   padding-left: var(--gutter); /* gutter size */
   background-clip: padding-box;
+  @media (max-width: $mobile) {
+    padding-left: 0;
+  }
 }
 
 /* Style your items */
@@ -281,11 +284,14 @@ textarea,
   flex-direction: column;
   width: 100%;
   margin: 0;
-  padding: 1em;
+  padding: 2em 1em 1em;
   border-radius: var(--border-radius);
   background: white;
   .form-buttons {
-    text-align: right;
+    text-align: left;
+    button {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -631,7 +637,7 @@ textarea,
   }
   .article-controls {
     width: 100%;
-    max-width: 360px;
+    max-width: 390px;
     margin-left: auto;
     .row {
       display: flex;
@@ -718,7 +724,7 @@ textarea,
     &.hidden {
       transform: translate3d(-50%, 75%, 0);
       opacity: 0;
-      z-index: -1;
+      pointer-events: none;
     }
   }
 }

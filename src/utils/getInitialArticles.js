@@ -62,14 +62,18 @@ const articles = [
 ];
 
 export const getInitialArticlesFirebaseObject = () => {
+  // Take pre-written articles data and transform it into array of EngramArticle
   const initialArticles = articles.map(
     ({ id, title, href, stars, note, createdAt }) =>
       new EngramArticle(id, title, href, stars, note, createdAt)
   );
 
+  // Transform the array of EngramArticle into an object of article id - article properties
   const articlesObject = initialArticles.reduce((obj, article) => {
+    // Take id from each article
     const { id, ...rest } = article;
 
+    // set id as the property key and rest as the value
     obj[id] = {
       ...rest,
     };
