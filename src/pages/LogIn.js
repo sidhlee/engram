@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { Helmet } from 'react-helmet';
 import Logo from '../components/Logo';
 import { useAuth } from '../context/authContext';
+import { Link } from 'react-router-dom';
 
 const LogIn = () => {
   const { signIn, user } = useAuth();
@@ -49,6 +50,9 @@ const LogIn = () => {
               Sign In with Google
             </button>
           </div>
+          <Link className="button-md inverse accent about" to="/about">
+            What is Engram?
+          </Link>
         </main>
       </div>
     </div>
