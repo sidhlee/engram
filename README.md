@@ -114,3 +114,4 @@ const validationSchema = yup.object().shape(
 
 - [Authentication with Firebase in React - GitHub Repo](https://github.com/WebDevSimplified/React-Firebase-Auth)
 - [Search-optimized SPAs with React Helmet](https://blog.logrocket.com/search-optimized-spas-react-helmet/)
+- [Netlify renders 404 on page refresh (using React and react-router)](https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router)
