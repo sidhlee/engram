@@ -4,26 +4,25 @@ import firebase from '../../config/firebase';
 
 const ArticleNote = ({ note, articleId }) => {
   const [noteText, setNoteText] = useState(note);
-  const textareaRef = useRef();
+
+  // https://css-tricks.com/debouncing-throttling-explained-examples/
+
+  // Saving debounced function inside ref to avoid using
+  // new instances of debounced function every time input value is changed triggering re-render of this component.
+  // "This will end up debouncing each keystroke rather than debouncing the entire input value."
+  // https://www.freecodecamp.org/news/debounce-and-throttle-in-react-with-hooks/
+  const debouncedSetFirebaseNote = useRef(
+    debounce((textareaValue) => {
+      firebase.database().ref(`demo/${articleId}/note`).set(textareaValue);
+      // uncomment below to see debounce in effect
+      // console.log('firebase set');
+    }, 350)
+  ).current;
 
   const updateNote = (updatedNote) => {
+    // update local state immediately
     setNoteText(updatedNote);
-
-    // https://css-tricks.com/debouncing-throttling-explained-examples/
-    // debounce keystroke after 1s before updating firebase
-    const updateFirebase = debounce((text) => {
-      firebase
-        .database()
-        .ref(`demo/${articleId}/note`)
-        // .set(text); // this is not working. why?
-        // debounce with the most current textarea value
-        .set(textareaRef.current.value);
-    }, 1000);
-
-    // why debounced function gets called as many times as the change event after given delay?
-    // updateFirebase(updatedNote);
-
-    updateFirebase();
+    debouncedSetFirebaseNote(updatedNote);
   };
 
   return (
@@ -34,7 +33,6 @@ const ArticleNote = ({ note, articleId }) => {
       <textarea
         id="articleNote"
         className="article-note-text"
-        ref={textareaRef}
         value={noteText}
         onChange={(e) => updateNote(e.target.value)}
       />
