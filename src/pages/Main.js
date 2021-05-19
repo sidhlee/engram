@@ -1,17 +1,17 @@
-import { Helmet } from 'react-helmet';
-import { ArticlesProvider } from '../context/articlesContext';
-import TopLevelArticleForm from '../components/TopLevelArticleForm';
-import TopicList from '../components/Topic/TopicList';
-import { useArticles } from '../context/articlesContext';
-import ErrorModal from '../components/ErrorModal';
-import Spinner from '../components/Spinner';
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { ArticlesProvider, useArticles } from '../context/articlesContext';
 import { useAuth } from '../context/authContext';
 import { useHistory } from 'react-router';
+
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { useState } from 'react';
 import MenuButton from '../components/MenuButton';
 import MenuModal from '../components/MenuModal';
+import TopicList from '../components/Topic/TopicList';
+import TopLevelArticleForm from '../components/TopLevelArticleForm';
+import Footer from '../components/Footer';
+import Spinner from '../components/Spinner';
+import ErrorModal from '../components/ErrorModal';
 
 const Main = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -2,7 +2,7 @@ import Logo from '../components/Logo';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Illust } from '../images/undraw_Calendar_re_ki49.svg';
 import Footer from '../components/Footer';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
 
 function About() {

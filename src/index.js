@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { AuthProvider } from './context/authContext';
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.scss';
-import { AuthProvider } from './context/authContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <HelmetProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </HelmetProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

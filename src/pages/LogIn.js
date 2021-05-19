@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import Logo from '../components/Logo';
 import { useAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';

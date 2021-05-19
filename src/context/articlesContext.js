@@ -45,11 +45,13 @@ export const ArticlesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const userId = user.id;
+
   useEffect(() => {
     const articlesRef = firebase.database().ref(userId);
 
     const unsubscribe = articlesRef.on('value', (dataSnapshot) => {
       setLoading(false);
+
       try {
         const data = dataSnapshot?.val();
         if (data) {
