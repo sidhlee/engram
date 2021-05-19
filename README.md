@@ -11,6 +11,11 @@ A personal tracking system for online learning materials
 
 ## Things I learned
 
+### How to show preview image on twitter
+
+- Add "summery_large_image" to twitter:card meta tag
+- Check the image dimension from working site. This tends to be changed often. (Twitter trying to filter out old links?)
+
 ### Keep any work that takes more time (computation, network request, etc...) higher in the tree
 
 Components that are lower in the tree tend to get re-rendered more often than their ancestors and have more instances of the same component. Try to keep children as dumb as possible for better performance.
