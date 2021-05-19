@@ -88,6 +88,12 @@ index.js:1 Warning: Using UNSAFE_componentWillMount in strict mode is not recomm
 Please update the following components: SideEffect(NullComponent)
 ```
 
+### How to debounce user input before API call
+
+You can save lots of request by debouncing user keystroke so that you app only send them over internet after user stopped typing.  
+Don't forget to store your debouncing function in the ref otherwise you'll end up calling new instances of the debounced function every time the component gets re-rendered by input state update.
+i.e. each new function is debouncing one key stroke.
+
 ### Firebase is a state management tool
 
 By updating state inside Firebase's value change listener, you're effectively synchronizing your app to the cloud database which works as the single source of truth.
