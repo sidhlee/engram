@@ -14,7 +14,63 @@ A personal tracking system for online learning materials
 ### How to show preview image on twitter
 
 - Add "summery_large_image" to twitter:card meta tag
-- Check the image dimension from working site. This tends to be changed often. (Twitter trying to filter out old links?)
+- Check the image dimension from working site. This tends to be changed often.
+- **IMPORTANT**: Use absolute path to your resource. For example, `https://engram.netlify.app/preview.png`.
+- In general, OG is used as a fallback when twitter card is not available. Place twitter meta before OG.
+
+```html
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+    name="description"
+    content="A personal tracking system for online learning resources"
+  />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>Engram</title>
+
+  <!-- Twitter cards-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@sidhlee" />
+  <meta name="twitter:title" content="Engram" />
+  <meta
+    name="twitter:description"
+    content="Personal tracking system for online learning resources"
+  />
+  <meta name="twitter:image" content="https://engram.netlify.app/preview.png" />
+  <!-- Open Graph-->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://engram.netlify.app" />
+  <meta property="og:title" content="Engram" />
+  <meta name="image" property="og:image" content="%PUBLIC_URL%/preview.png" />
+  <meta
+    property="og:description"
+    content="Personal tracking system for online learning resources"
+  />
+  <meta property="og:site_name" content="Engram" />
+  <meta name="author" content="Sid Hayoun Lee" />
+  <!-- Next tags are optional but recommended -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
+</head>
+```
 
 ### Keep any work that takes more time (computation, network request, etc...) higher in the tree
 
