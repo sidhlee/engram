@@ -724,7 +724,7 @@ textarea,
     &.hidden {
       transform: translate3d(-50%, 75%, 0);
       opacity: 0;
-      z-index: -1;
+      pointer-events: none;
     }
   }
 }
