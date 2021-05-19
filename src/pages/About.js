@@ -1,10 +1,18 @@
 import Logo from '../components/Logo';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Illust } from '../images/undraw_Calendar_re_ki49.svg';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
+import { useEffect } from 'react';
 
 function About() {
+  // https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
+  const { pathname } = useLocation();
+  // Scroll to top when navigated
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Helmet>
