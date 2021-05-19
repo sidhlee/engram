@@ -234,6 +234,9 @@ textarea,
 .my-masonry-grid_column {
   padding-left: var(--gutter); /* gutter size */
   background-clip: padding-box;
+  @media (max-width: $mobile) {
+    padding-left: 0;
+  }
 }
 
 /* Style your items */
