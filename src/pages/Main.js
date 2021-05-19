@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import { useState } from 'react';
 import MenuButton from '../components/MenuButton';
 import MenuModal from '../components/MenuModal';
+import SEO from '../components/SEO';
 
 const Main = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,6 +41,8 @@ const Main = () => {
   };
   return (
     <div className="App">
+      <SEO title={'Engram | Main'} />
+
       <MenuButton
         toggleMenu={() => setIsMenuOpen((show) => !show)}
         isMenuOpen={isMenuOpen}

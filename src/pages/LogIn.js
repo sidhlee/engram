@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Logo from '../components/Logo';
 import { useAuth } from '../context/authContext';
+import SEO from '../components/SEO';
 
 const LogIn = () => {
   const { signIn, user } = useAuth();
@@ -26,6 +27,7 @@ const LogIn = () => {
 
   return (
     <div className="LogIn">
+      <SEO title={'Engram | Signin'} />
       <div className="login-screen">
         <header>
           <Logo />
