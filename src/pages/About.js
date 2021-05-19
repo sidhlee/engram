@@ -33,7 +33,11 @@ function About() {
               is a personal tracking system for online learning resources. Use
               Engram to bookmark your favorite articles and tutorials, rate them
               and create a side note. You'll have a deeper understanding of the
-              topic each time you revisit them. 💪 🧠 💡 <br />
+              topic each time you revisit them.{' '}
+              <span rol="image" aria-label="strong brain lightbulb">
+                💪&nbsp;🧠&nbsp;💡
+              </span>
+              <br />
               No more losing track of countless read-later links!
             </p>
           </div>

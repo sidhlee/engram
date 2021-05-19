@@ -18,7 +18,7 @@ $mobile: 700px;
   --cl-accent: rgb(2, 192, 218);
   --cl-accent-dark: rgb(0, 171, 194);
   --cl-primary: #465ac9;
-  --cl-primary-dark: #3f51b5;
+  --cl-primary-dark: #3b4cad;
 
   --cl-blue: var(--cl-primary);
   --cl-blue-dark: var(--cl-primary-dark);
@@ -88,7 +88,7 @@ body {
 h2,
 h3,
 p {
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 img {
@@ -358,6 +358,7 @@ textarea,
   color: var(--text-inverse);
   font-size: 1.2rem;
   font-weight: bold;
+  transition: all 200ms ease;
   &:hover,
   &:focus {
     background: var(--cl-blue-dark);
