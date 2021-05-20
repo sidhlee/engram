@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 const Navbar = ({ logOut, userName, userImageURL }) => {
   return (
     <div className="Navbar">
-      <Link to="/">
-        <Logo />
-      </Link>
+      <h1>
+        <Link to="/">
+          <Logo />
+        </Link>
+      </h1>
 
       <div className="navbar-col-right">
         <Link className="button-md inverse" to="/about">

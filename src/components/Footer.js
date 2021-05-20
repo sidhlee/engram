@@ -2,13 +2,16 @@ import React from 'react';
 import { FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Logo from './Logo';
 import junoLogo from '../images/juno-logo.png';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
     <footer className={`Footer`}>
       <div className="footer-container">
         <div className="credit">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           <p>
             is created by{' '}
             <a href="mailto:sidhlee@gmail.com">

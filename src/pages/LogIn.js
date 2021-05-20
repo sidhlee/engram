@@ -33,7 +33,9 @@ const LogIn = () => {
       </Helmet>
       <div className="login-screen">
         <header>
-          <Logo />
+          <h1>
+            <Logo />
+          </h1>
         </header>
         <main>
           <div className="login-buttons">

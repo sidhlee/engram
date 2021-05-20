@@ -36,7 +36,11 @@ function About() {
             </figcaption>
           </div>
           <div className="what-is">
-            <Logo />
+            <h1>
+              <Link to="/">
+                <Logo />
+              </Link>
+            </h1>
             <p>
               is a personal tracking system for online learning resources. Use
               Engram to bookmark your favorite articles and tutorials, rate them

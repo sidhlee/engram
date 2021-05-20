@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ArticlesProvider, useArticles } from '../context/articlesContext';
 import { useAuth } from '../context/authContext';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 import Navbar from '../components/Navbar';
 import MenuButton from '../components/MenuButton';
@@ -25,6 +25,13 @@ const Main = () => {
   const { logOut, user } = useAuth();
 
   const history = useHistory();
+
+  // https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
+  const { pathname } = useLocation();
+  // Scroll to top when navigated
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const logOutAndRedirect = async () => {
     // If you don't wait for logOut here, you'll get redirected immediately to the login page,

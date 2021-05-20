@@ -586,19 +586,19 @@ textarea,
 }
 
 .Logo {
-  .logo {
-    font-size: 2.75rem;
-    color: var(--text-inverse);
-    letter-spacing: -2px;
-    opacity: 0.9;
-    white-space: nowrap;
-    span {
-      position: relative;
-      top: 0.1em;
-    }
-    @media (max-width: $mobile) {
-      font-size: 2rem;
-    }
+  display: inline-block;
+  font-size: 2.75rem;
+  font-weight: bold;
+  color: var(--text-inverse);
+  letter-spacing: -2px;
+  opacity: 0.9;
+  white-space: nowrap;
+  .logo-img {
+    position: relative;
+    top: 0.1em;
+  }
+  @media (max-width: $mobile) {
+    font-size: 2rem;
   }
 }
 
