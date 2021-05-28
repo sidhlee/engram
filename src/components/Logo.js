@@ -5,7 +5,7 @@ function Logo() {
     <span className={`Logo`}>
       Engram{' '}
       <span className="logo-img">
-        <FcMindMap />
+        <FcMindMap aria-label="engram logo" />
       </span>
     </span>
   );

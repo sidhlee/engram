@@ -31,20 +31,18 @@ function Footer() {
               href="https://github.com/sidhlee"
               rel="noreferrer"
               target="_blank"
-              aria-label="github"
             >
               <span>
-                <FaGithub />
+                <FaGithub aria-label="github" />
               </span>
             </a>
             <a
               href="https://twitter.com/sidhlee"
               rel="noreferrer"
               target="_blank"
-              aria-label="twitter"
             >
               <span>
-                <FaTwitter />
+                <FaTwitter aria-label="twitter" />
               </span>
             </a>
             <a
@@ -54,7 +52,7 @@ function Footer() {
               aria-label="instagram"
             >
               <span>
-                <FaInstagram />
+                <FaInstagram aria-label="instagram" />
               </span>
             </a>
           </div>
