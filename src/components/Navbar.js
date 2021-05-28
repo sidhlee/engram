@@ -11,7 +11,7 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
         </Link>
       </h1>
 
-      <div className="navbar-col-right">
+      <nav className="navbar-col-right">
         <Link className="button-md nav-item inverse" to="/about">
           What is Engram?
         </Link>
@@ -22,10 +22,7 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
         <div className="user-img">
           <img src={userImageURL} alt={userName} />
         </div>
-        <div className="illustration">
-          <img src="" alt="" />
-        </div>
-      </div>
+      </nav>
     </div>
   );
 };
