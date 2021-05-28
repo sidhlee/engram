@@ -15,7 +15,7 @@ $mobile: 700px;
   // colors
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
-  --cl-accent: rgb(2, 192, 218);
+  --cl-accent: rgb(6, 199, 224);
   --cl-accent-dark: rgb(0, 171, 194);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3b4cad;
@@ -32,7 +32,8 @@ $mobile: 700px;
 
   --text-main: #333;
   --text-inverse: white;
-  --text-muted: #838383;
+  --text-muted: #646363;
+  --text-muted-inverse: #8a8989;
 
   // spacing
   --px: Min(Max(0.25rem, 4vw), 4rem);
@@ -122,7 +123,8 @@ button {
 a {
   text-decoration: none;
   color: inherit;
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--cl-link-hover);
   }
 }
@@ -337,7 +339,7 @@ textarea,
 
 .button-md {
   @include flex-center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   padding: 0.25em 0.5em;
   color: var(--text-muted);
   span {
@@ -540,14 +542,15 @@ textarea,
     color: var(--text-inverse);
   }
   .about {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .signout {
     margin-top: 4rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
     opacity: 0.8;
+    font-size: 1.5rem;
     &:hover,
     &:active,
     &:focus {
@@ -568,18 +571,23 @@ textarea,
       display: none;
     }
   }
-  .signout {
-    position: relative;
-    top: 2px;
+  .nav-item {
+    color: var(--text-inverse);
+    &:hover,
+    &:focus {
+      color: var(--cl-accent);
+    }
   }
+
   .user-name {
     padding: 0.25em 0.5em;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-inverse);
     @include flex-center;
   }
 
   .user-img {
+    display: flex;
     width: 3rem;
     height: 3rem;
   }
@@ -655,15 +663,22 @@ textarea,
     .row {
       display: flex;
       justify-content: space-between;
+
       padding: 0 0.25em;
       gap: 0.5em;
     }
-    button {
+    svg {
+      // align icons vertically with other text element
+      display: block;
+    }
+    .article-btn {
       font-size: 1rem;
     }
     .article-note {
       &.not-empty {
         color: var(--text-main);
+        text-decoration: underline;
+        // font-weight: bold;
       }
     }
   }
@@ -793,6 +808,10 @@ textarea,
   .login-button {
     margin: 0.25rem;
   }
+
+  a.about {
+    font-size: 1.4rem;
+  }
 }
 
 .Footer {
@@ -802,7 +821,7 @@ textarea,
   padding: 4rem 2rem;
   text-align: center;
 
-  color: var(--text-muted);
+  color: var(--text-muted-inverse);
   .footer-container {
     width: 62%;
     p {
@@ -833,20 +852,20 @@ textarea,
       }
     }
     .social {
-      margin: 3rem auto 4rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      margin: 3rem auto 4rem;
       .link-icons {
         display: flex;
-        width: 15rem;
         justify-content: space-between;
+        width: 15rem;
 
         span {
           font-size: 2.5rem;
           svg {
-            fill: var(--text-muted);
+            fill: var(--text-muted-inverse);
             transition: fill 300ms ease;
             &:hover {
               fill: var(--text-inverse);

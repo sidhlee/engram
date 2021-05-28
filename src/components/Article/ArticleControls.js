@@ -40,12 +40,10 @@ const ArticleControls = ({
         </button>
         <button
           type="button"
-          className="delete-button"
+          className="article-button delete-button"
           onClick={toggleConfirmMenu}
         >
-          <span aria-label="delete article">
-            <TrashIcon />
-          </span>
+          <TrashIcon aria-label="delete article" />
         </button>
       </div>
     </div>
