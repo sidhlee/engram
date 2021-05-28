@@ -15,7 +15,7 @@ $mobile: 700px;
   // colors
   --cl-yellow: #eaae00;
   --cl-primary-light: #cfd8dc;
-  --cl-accent: rgb(2, 192, 218);
+  --cl-accent: rgb(6, 199, 224);
   --cl-accent-dark: rgb(0, 171, 194);
   --cl-primary: #465ac9;
   --cl-primary-dark: #3b4cad;
@@ -581,12 +581,13 @@ textarea,
 
   .user-name {
     padding: 0.25em 0.5em;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-inverse);
     @include flex-center;
   }
 
   .user-img {
+    display: flex;
     width: 3rem;
     height: 3rem;
   }
@@ -676,6 +677,8 @@ textarea,
     .article-note {
       &.not-empty {
         color: var(--text-main);
+        text-decoration: underline;
+        // font-weight: bold;
       }
     }
   }
