@@ -22,18 +22,20 @@ function About() {
         <div className={`About`}>
           <div className="wiki">
             <h2>Engram (neuropsychology)</h2>
-            <blockquote cite="https://en.wikipedia.org/wiki/Engram_(neuropsychology)">
-              <p>
-                An <strong>engram</strong> is a unit of cognitive information
-                imprinted in a physical substance, theorized to be the means by
-                which memories are stored as biophysical or biochemical changes
-                in the brain or other biological tissue, in response to external
-                stimuli.
-              </p>
-            </blockquote>
-            <figcaption>
-              -<cite>Wikipedia</cite>
-            </figcaption>
+            <figure>
+              <blockquote cite="https://en.wikipedia.org/wiki/Engram_(neuropsychology)">
+                <p>
+                  An <strong>engram</strong> is a unit of cognitive information
+                  imprinted in a physical substance, theorized to be the means
+                  by which memories are stored as biophysical or biochemical
+                  changes in the brain or other biological tissue, in response
+                  to external stimuli.
+                </p>
+              </blockquote>
+              <figcaption>
+                -<cite>Wikipedia</cite>
+              </figcaption>
+            </figure>
           </div>
           <div className="what-is">
             <h1>
