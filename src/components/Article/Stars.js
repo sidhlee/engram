@@ -15,7 +15,7 @@ const Stars = ({ stars, updateStars }) => {
           type="button"
           onClick={() => updateStars(i + 1)} // update stars based on the button index between 0 to 4
         >
-          <FaStar size={17} />
+          <FaStar aria-label={`star${i + 1}`} size={17} />
         </button>
       </li>
     );

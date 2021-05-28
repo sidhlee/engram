@@ -60,7 +60,10 @@ function About() {
           </div>
           <div className="illust-container">
             {/* Source: undraw.co */}
-            <Illust className="illust" />
+            <Illust
+              className="illust"
+              aria-label="a woman adding article to engram"
+            />
           </div>
         </div>
       </div>

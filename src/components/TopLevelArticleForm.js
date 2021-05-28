@@ -16,7 +16,7 @@ const TopLevelArticleForm = () => {
         className={`top-form-toggle shadow${show ? ' close-form' : ''}`}
         onClick={() => setShow((show) => !show)}
       >
-        <FaPlus />
+        <FaPlus aria-label="add article" />
       </button>
 
       <BgOverlay show={show} onClick={() => setShow(false)} />

@@ -13,17 +13,13 @@ function TopicHeader({
           className="button-md article-remove"
           onClick={handleDeleteTopicButtonClick}
         >
-          <span aria-label="Remove topic and all included articles">
-            <FaMinus />
-          </span>
+          <FaMinus aria-label="Remove topic and all included articles" />
         </button>
         <button
           className="button-md article-add"
           onClick={handleAddArticleButtonClick}
         >
-          <span aria-label="add article">
-            <FaPlus />
-          </span>
+          <FaPlus aria-label="add article" />
         </button>
       </div>
     </header>

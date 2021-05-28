@@ -11,21 +11,18 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
         </Link>
       </h1>
 
-      <div className="navbar-col-right">
-        <Link className="button-md inverse" to="/about">
+      <nav className="navbar-col-right">
+        <Link className="button-md nav-item inverse" to="/about">
           What is Engram?
         </Link>
-        <button className="signout button-md inverse" onClick={logOut}>
+        <button className="signout nav-item button-md inverse" onClick={logOut}>
           Sign Out
         </button>
         <span className="user-name desktop-only">{userName}</span>
         <div className="user-img">
           <img src={userImageURL} alt={userName} />
         </div>
-        <div className="illustration">
-          <img src="" alt="" />
-        </div>
-      </div>
+      </nav>
     </div>
   );
 };
