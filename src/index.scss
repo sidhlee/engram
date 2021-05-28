@@ -659,10 +659,15 @@ textarea,
     .row {
       display: flex;
       justify-content: space-between;
+
       padding: 0 0.25em;
       gap: 0.5em;
     }
-    button {
+    svg {
+      // align icons vertically with other text elements
+      display: block;
+    }
+    .article-btn {
       font-size: 1rem;
     }
     .article-note {
