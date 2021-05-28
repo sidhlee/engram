@@ -32,7 +32,7 @@ $mobile: 700px;
 
   --text-main: #333;
   --text-inverse: white;
-  --text-muted: #838383;
+  --text-muted: #646363;
 
   // spacing
   --px: Min(Max(0.25rem, 4vw), 4rem);
@@ -337,7 +337,7 @@ textarea,
 
 .button-md {
   @include flex-center;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   padding: 0.25em 0.5em;
   color: var(--text-muted);
   span {
@@ -540,12 +540,12 @@ textarea,
     color: var(--text-inverse);
   }
   .about {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .signout {
     margin-top: 4rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
     opacity: 0.8;
     &:hover,
@@ -568,10 +568,14 @@ textarea,
       display: none;
     }
   }
-  .signout {
-    position: relative;
-    top: 2px;
+  .nav-item {
+    color: var(--text-inverse);
+    &:hover,
+    &:focus {
+      color: var(--cl-accent);
+    }
   }
+
   .user-name {
     padding: 0.25em 0.5em;
     font-size: 1.2rem;
@@ -792,6 +796,10 @@ textarea,
   }
   .login-button {
     margin: 0.25rem;
+  }
+
+  a.about {
+    font-size: 1.4rem;
   }
 }
 
