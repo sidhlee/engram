@@ -1,14 +1,15 @@
 import { useRef, useState } from 'react';
 import debounce from 'lodash.debounce';
-import firebase from '../../config/firebase';
 import styled from 'styled-components';
+import firebase from '../../config/firebase';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const StyledArticleNote = styled.div`
   margin-top: 1rem;
   textarea {
     padding: 0.5em;
     resize: vertical;
-    line-height: 1.4;
+    line-height: 1.6;
     border-color: var(--text-muted);
   }
 `;
@@ -41,9 +42,10 @@ const ArticleNote = ({ note, articleId, userId }) => {
       <label className="visually-hidden" htmlFor="articleNote">
         Edit article note.
       </label>
-      <textarea
+      <TextareaAutosize
         id="articleNote"
         className="article-note-text"
+        minRows={3}
         value={noteText}
         onChange={(e) => updateNote(e.target.value)}
       />
