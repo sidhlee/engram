@@ -1,6 +1,12 @@
 import orderBy from 'lodash.orderby';
 import Masonry from 'react-masonry-css';
+import styled from 'styled-components';
 import Topic from './Topic';
+
+const StyledTopicList = styled(Masonry)`
+  opacity: 0;
+  animation: fade-in 1.2s forwards ease-in-out;
+`;
 
 /**
  * @component
@@ -38,13 +44,13 @@ const TopicList = ({ topicsOfArticles, deleteArticles, userId }) => {
   };
 
   return (
-    <Masonry
+    <StyledTopicList
       className="TopicList my-masonry-grid"
       breakpointCols={breakpointColumnsObj}
       columnClassName="my-masonry-grid_column"
     >
       {topicComponents}
-    </Masonry>
+    </StyledTopicList>
   );
 };
 

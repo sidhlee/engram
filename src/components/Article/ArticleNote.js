@@ -1,8 +1,20 @@
-import debounce from 'lodash.debounce';
 import { useRef, useState } from 'react';
+import debounce from 'lodash.debounce';
+import styled from 'styled-components';
 import firebase from '../../config/firebase';
+import TextareaAutosize from 'react-textarea-autosize';
 
-const ArticleNote = ({ note, articleId }) => {
+const StyledArticleNote = styled.div`
+  margin-top: 1rem;
+  textarea {
+    padding: 0.5em;
+    resize: vertical;
+    line-height: 1.6;
+    border-color: var(--text-muted);
+  }
+`;
+
+const ArticleNote = ({ note, articleId, userId }) => {
   const [noteText, setNoteText] = useState(note);
 
   // https://css-tricks.com/debouncing-throttling-explained-examples/
@@ -13,7 +25,7 @@ const ArticleNote = ({ note, articleId }) => {
   // https://www.freecodecamp.org/news/debounce-and-throttle-in-react-with-hooks/
   const debouncedSetFirebaseNote = useRef(
     debounce((textareaValue) => {
-      firebase.database().ref(`demo/${articleId}/note`).set(textareaValue);
+      firebase.database().ref(`${userId}/${articleId}/note`).set(textareaValue);
       // uncomment below to see debounce in effect
       // console.log('firebase set');
     }, 350)
@@ -26,17 +38,18 @@ const ArticleNote = ({ note, articleId }) => {
   };
 
   return (
-    <div className="ArticleNote">
+    <StyledArticleNote className="ArticleNote">
       <label className="visually-hidden" htmlFor="articleNote">
         Edit article note.
       </label>
-      <textarea
+      <TextareaAutosize
         id="articleNote"
         className="article-note-text"
+        minRows={3}
         value={noteText}
         onChange={(e) => updateNote(e.target.value)}
       />
-    </div>
+    </StyledArticleNote>
   );
 };
 

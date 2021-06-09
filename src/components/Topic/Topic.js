@@ -1,9 +1,35 @@
-import Article from '../Article/Article';
-
 import { useState } from 'react';
+import styled from 'styled-components';
+import Article from '../Article/Article';
 import ArticleForm from '../Article/ArticleForm';
 import ConfirmationAlert from '../ConfirmationAlert';
 import TopicHeader from './TopicHeader';
+
+const StyledTopic = styled.article`
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto var(--gutter);
+  padding: Min(Max(0.1rem, 1.8vw), 1rem);
+  background: var(--cl-off-white);
+  border-radius: var(--border-radius);
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .topic-name {
+      margin-bottom: 0.5em;
+    }
+    .topic-controls {
+      position: relative;
+      bottom: 0.25rem;
+      display: flex;
+    }
+  }
+
+  .topic-form {
+    margin: 1rem 0;
+  }
+`;
 
 /**
  * @component
@@ -29,7 +55,7 @@ const Topic = ({ articles, deleteArticles, userId }) => {
   };
 
   return (
-    <section className="Topic">
+    <StyledTopic className="Topic">
       <TopicHeader
         topic={topic}
         handleAddArticleButtonClick={handleAddArticleButtonClick}
@@ -67,7 +93,7 @@ const Topic = ({ articles, deleteArticles, userId }) => {
           ) : null;
         })}
       </ul>
-    </section>
+    </StyledTopic>
   );
 };
 

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArticlesProvider, useArticles } from '../context/articlesContext';
 import { useAuth } from '../context/authContext';
 import { useHistory, useLocation } from 'react-router';
+import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
 import MenuButton from '../components/MenuButton';
@@ -12,6 +13,23 @@ import TopLevelArticleForm from '../components/TopLevelArticleForm';
 import Footer from '../components/Footer';
 import Spinner from '../components/Spinner';
 import ErrorModal from '../components/ErrorModal';
+import { mq } from '../styles';
+
+const StyledMain = styled.div`
+  .app-main {
+    padding: 3rem var(--px) 4rem;
+    min-height: 100vh;
+    @media (max-width: ${mq.mobile}px) {
+      padding: 1rem 2px 4rem;
+    }
+  }
+
+  .footer {
+    color: var(--text-inverse);
+    padding: 2rem;
+    text-align: center;
+  }
+`;
 
 const Main = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +65,7 @@ const Main = () => {
     history.push('/login');
   };
   return (
-    <div className="App">
+    <StyledMain className="App">
       <Helmet>
         <title>Engram | Main</title>
       </Helmet>
@@ -86,7 +104,7 @@ const Main = () => {
       </main>
       <Footer />
       {error && <ErrorModal error={error} clearError={clearError} />}
-    </div>
+    </StyledMain>
   );
 };
 

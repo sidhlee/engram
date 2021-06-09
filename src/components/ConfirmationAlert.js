@@ -1,3 +1,15 @@
+import styled from 'styled-components';
+import { mixins } from '../styles';
+
+const StyledConfirmationAlert = styled.div`
+  ${mixins.flexCenter}
+  padding: 0.5rem;
+  p {
+    color: var(--cl-danger);
+    margin-right: 1rem;
+  }
+`;
+
 const ConfirmationAlert = ({
   cancelAction,
   confirmAction,
@@ -5,7 +17,7 @@ const ConfirmationAlert = ({
   confirmText,
 }) => {
   return (
-    <div className="ConfirmationAlert">
+    <StyledConfirmationAlert className="ConfirmationAlert">
       <p>{message}</p>
       <button className="button-sm button-success" onClick={cancelAction}>
         Cancel
@@ -13,7 +25,7 @@ const ConfirmationAlert = ({
       <button className="button-sm button-danger" onClick={confirmAction}>
         {confirmText}
       </button>
-    </div>
+    </StyledConfirmationAlert>
   );
 };
 

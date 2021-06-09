@@ -1,5 +1,14 @@
+import styled from 'styled-components';
 import FormInput from '../FormInput';
 import useArticleFormik from '../../hooks/useArticleFormik';
+
+const StyledArticleForm = styled.form`
+  z-index: 1000;
+  min-width: 350px;
+  &.border {
+    border: 1px solid var(--border-color);
+  }
+`;
 
 const ArticleForm = ({ className, topic, closeForm }) => {
   const formik = useArticleFormik(topic, closeForm);
@@ -9,7 +18,7 @@ const ArticleForm = ({ className, topic, closeForm }) => {
   }`;
 
   return (
-    <form className={formClassName} onSubmit={formik.handleSubmit}>
+    <StyledArticleForm className={formClassName} onSubmit={formik.handleSubmit}>
       <div className="form-inputs">
         {!topic && (
           <FormInput
@@ -45,7 +54,7 @@ const ArticleForm = ({ className, topic, closeForm }) => {
           Add
         </button>
       </div>
-    </form>
+    </StyledArticleForm>
   );
 };
 export default ArticleForm;

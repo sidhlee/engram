@@ -1,10 +1,46 @@
 import React from 'react';
+import styled from 'styled-components';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
+import { mixins, mq } from '../styles';
+
+const StyledNavbar = styled.div`
+  padding: 1rem var(--px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .navbar-col-right {
+    display: flex;
+    gap: 1rem;
+    @media (max-width: ${mq.mobile}px) {
+      display: none;
+    }
+  }
+  .nav-item {
+    color: var(--text-inverse);
+    &:hover,
+    &:focus {
+      color: var(--cl-accent);
+    }
+  }
+
+  .user-name {
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    color: var(--text-inverse);
+    ${mixins.flexCenter}
+  }
+
+  .user-img {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+  }
+`;
 
 const Navbar = ({ logOut, userName, userImageURL }) => {
   return (
-    <div className="Navbar">
+    <StyledNavbar className="Navbar">
       <h1>
         <Link to="/">
           <Logo />
@@ -23,7 +59,7 @@ const Navbar = ({ logOut, userName, userImageURL }) => {
           <img src={userImageURL} alt={userName} />
         </div>
       </nav>
-    </div>
+    </StyledNavbar>
   );
 };
 
