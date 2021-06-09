@@ -1,9 +1,56 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import firebase from '../../config/firebase';
 import ArticleControls from './ArticleControls';
 import ArticleTitle from './ArticleTitle';
 import ArticleNote from './ArticleNote';
 import ConfirmationAlert from '../ConfirmationAlert';
+
+const StyledArticle = styled.li`
+  padding: 0.5rem;
+  background: var(--cl-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
+  .article-name {
+    font-size: 1rem;
+    font-weight: 500;
+
+    margin-bottom: 1em;
+  }
+  .article-controls {
+    width: 100%;
+    max-width: 390px;
+    margin-left: auto;
+    .row {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 0 0.25em;
+      gap: 0.5em;
+    }
+    svg {
+      // align icons vertically with other text element
+      display: block;
+    }
+    .article-btn {
+      font-size: 1rem;
+    }
+    .article-note {
+      &.not-empty {
+        color: var(--text-main);
+        text-decoration: underline;
+        // font-weight: bold;
+      }
+    }
+  }
+  .article-note-text {
+    width: 100%;
+  }
+`;
 
 const Article = ({ id, userId, title, href, stars, read, note }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -54,7 +101,7 @@ const Article = ({ id, userId, title, href, stars, read, note }) => {
   };
 
   return (
-    <li className="Article">
+    <StyledArticle className="Article">
       <ArticleTitle href={href} title={title} />
       <ArticleControls
         stars={stars}
@@ -75,7 +122,7 @@ const Article = ({ id, userId, title, href, stars, read, note }) => {
           confirmAction={deleteArticle}
         />
       )}
-    </li>
+    </StyledArticle>
   );
 };
 

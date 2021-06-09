@@ -1,4 +1,17 @@
+import styled from 'styled-components';
 import { FaStar } from 'react-icons/fa';
+
+const StyledStars = styled.ul`
+  display: flex;
+  .star-item {
+    margin: 0;
+    &.star-on {
+      svg {
+        fill: var(--cl-yellow);
+      }
+    }
+  }
+`;
 
 const Stars = ({ stars, updateStars }) => {
   const maxStars = 5;
@@ -21,7 +34,7 @@ const Stars = ({ stars, updateStars }) => {
     );
   });
 
-  return <ul className="Stars">{starItems}</ul>;
+  return <StyledStars className="Stars">{starItems}</StyledStars>;
 };
 
 export default Stars;

@@ -1,9 +1,29 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components';
 import Logo from '../components/Logo';
 import { useAuth } from '../context/authContext';
 import { Link } from 'react-router-dom';
+import { mixins } from '../styles';
+
+const StyledLogIn = styled.div`
+  height: 100vh;
+  ${mixins.flexCenter}
+  flex-direction: column;
+  text-align: center;
+
+  .login-buttons {
+    margin: 1rem;
+  }
+  .login-button {
+    margin: 0.25rem;
+  }
+
+  a.about {
+    font-size: 1.4rem;
+  }
+`;
 
 const LogIn = () => {
   const { signIn, user } = useAuth();
@@ -27,7 +47,7 @@ const LogIn = () => {
   }, [user, history]);
 
   return (
-    <div className="LogIn">
+    <StyledLogIn className="LogIn">
       <Helmet>
         <title>Engram | Sign In</title>
       </Helmet>
@@ -57,7 +77,7 @@ const LogIn = () => {
           </Link>
         </main>
       </div>
-    </div>
+    </StyledLogIn>
   );
 };
 export default LogIn;

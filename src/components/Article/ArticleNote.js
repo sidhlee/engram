@@ -1,6 +1,17 @@
-import debounce from 'lodash.debounce';
 import { useRef, useState } from 'react';
+import debounce from 'lodash.debounce';
 import firebase from '../../config/firebase';
+import styled from 'styled-components';
+
+const StyledArticleNote = styled.div`
+  margin-top: 1rem;
+  textarea {
+    padding: 0.5em;
+    resize: vertical;
+    line-height: 1.4;
+    border-color: var(--text-muted);
+  }
+`;
 
 const ArticleNote = ({ note, articleId, userId }) => {
   const [noteText, setNoteText] = useState(note);
@@ -26,7 +37,7 @@ const ArticleNote = ({ note, articleId, userId }) => {
   };
 
   return (
-    <div className="ArticleNote">
+    <StyledArticleNote className="ArticleNote">
       <label className="visually-hidden" htmlFor="articleNote">
         Edit article note.
       </label>
@@ -36,7 +47,7 @@ const ArticleNote = ({ note, articleId, userId }) => {
         value={noteText}
         onChange={(e) => updateNote(e.target.value)}
       />
-    </div>
+    </StyledArticleNote>
   );
 };
 
