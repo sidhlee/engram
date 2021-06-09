@@ -2,7 +2,7 @@ import debounce from 'lodash.debounce';
 import { useRef, useState } from 'react';
 import firebase from '../../config/firebase';
 
-const ArticleNote = ({ note, articleId }) => {
+const ArticleNote = ({ note, articleId, userId }) => {
   const [noteText, setNoteText] = useState(note);
 
   // https://css-tricks.com/debouncing-throttling-explained-examples/
@@ -13,7 +13,7 @@ const ArticleNote = ({ note, articleId }) => {
   // https://www.freecodecamp.org/news/debounce-and-throttle-in-react-with-hooks/
   const debouncedSetFirebaseNote = useRef(
     debounce((textareaValue) => {
-      firebase.database().ref(`demo/${articleId}/note`).set(textareaValue);
+      firebase.database().ref(`${userId}/${articleId}/note`).set(textareaValue);
       // uncomment below to see debounce in effect
       // console.log('firebase set');
     }, 350)

@@ -39,8 +39,6 @@ export const AuthProvider = ({ children }) => {
     } else {
       // Sign in using Google OAuth
       return auth.signInWithPopup(googleProvider).then((result) => {
-        console.log(result);
-
         const initialArticles = getInitialArticlesFirebaseObject();
 
         const userId = result.user.uid;

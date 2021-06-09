@@ -66,7 +66,7 @@ const Article = ({ id, userId, title, href, stars, read, note }) => {
         toggleConfirmMenu={toggleConfirmMenu}
         toggleNote={() => setShowNote((show) => !show)}
       />
-      {showNote && <ArticleNote note={note} articleId={id} />}
+      {showNote && <ArticleNote note={note} articleId={id} userId={userId} />}
       {showDeleteConfirm && (
         <ConfirmationAlert
           message="Delete article?"
