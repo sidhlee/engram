@@ -28,7 +28,7 @@ const ArticleNote = ({ note, articleId, userId }) => {
       firebase.database().ref(`${userId}/${articleId}/note`).set(textareaValue);
       // uncomment below to see debounce in effect
       // console.log('firebase set');
-    }, 350)
+    }, 1000)
   ).current;
 
   const updateNote = (updatedNote) => {
