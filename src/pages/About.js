@@ -1,7 +1,7 @@
 import Logo from '../components/Logo';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
-import { mixins } from '../styles';
+import { mixins, mq } from '../styles';
 import { ReactComponent as Illust } from '../images/undraw_Calendar_re_ki49.svg';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet-async';
@@ -71,10 +71,38 @@ const StyledAbout = styled.div`
       svg {
         width: Min(Max(300px, 50vw), 600px);
         height: Min(Max(280px, 30vw), 400px);
-        filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.8));
+        stroke: #333;
+        stroke-width: 6px;
+        animation: stroke 4s infinite ease-in-out alternate;
+        stroke-dasharray: 3800px;
       }
 
-      animation: mid-air 4s infinite ease-in-out;
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: 3800px;
+        }
+      }
+
+      /* animation: mid-air 4s infinite ease-in-out; */
+    }
+
+    @media (min-width: ${mq.mobile}px) {
+      max-width: 970px;
+      grid-template-columns: 1.5fr 2fr;
+      .illust-container {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        align-self: end;
+        svg {
+          width: 100%;
+          height: auto;
+          filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+        }
+      }
     }
   }
 `;
